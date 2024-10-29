@@ -4,14 +4,17 @@ CSCI 5117, Fall 2024, [assignment description](https://canvas.umn.edu/courses/46
 
 ## App Info:
 
-* Team Name: TODO
+* Team Name: 20245117
+
 * App Name: TODO
 * App Link: <https://TODO.com/>
 
 ### Students
 
-* First Last, x500@umn.edu
-* ...
+* Qinghong Fan, fan00123@umn.edu
+* Linghe Wang, wang9257@umn.edu
+* Zhiyuan Lin, lin00905@umn.edu
+* Abdullahi Nor, nor00003@umn.edu
 
 
 ## Key Features
