@@ -59,6 +59,28 @@ The user can enter the desired destination and save this route for future runnin
 The user can view the saved running route.
 ![Alt text](https://github.com/csci5117f24/project-2-20245117/blob/main/low-fidelity/pc_saved_route_page.png "saved route page")
 
+### Phone end
+This is the default page when unlogged-in users browse the website.
+![Alt text](https://github.com/csci5117f24/project-2-20245117/blob/main/low-fidelity/phone_home_not_login.png "Home page without login")
+
+This is the home page after users log in. A calendar is displayed, where the user can select any date to view past running stats or make a new plan. A notification will pop up to remind the user of the running plan.
+![Alt text](https://github.com/csci5117f24/project-2-20245117/blob/main/low-fidelity/phone_home_login.png "Home page with login")
+
+When the user clicks on a colored date, this page will show up to display the user's running stats on that day.
+![Alt text](https://github.com/csci5117f24/project-2-20245117/blob/main/low-fidelity/phone_specific_date_stats.png "specific date stats")
+
+This page displays the user's weekly or monthly running stats.
+![Alt text](https://github.com/csci5117f24/project-2-20245117/blob/main/low-fidelity/phone_weekly_monthly_stats.png "weekly or monthly stats")
+
+The user can make a new running plan on this page.
+![Alt text](https://github.com/csci5117f24/project-2-20245117/blob/main/low-fidelity/phone_create_new_plan.png "create new running plan")
+
+The user can enter the desired destination and choose either to save this route for future running or start running right away.
+![Alt text](https://github.com/csci5117f24/project-2-20245117/blob/main/low-fidelity/phone_map_page.png "map page")
+
+The user can view the saved running route. The user can also apply this route to start running right away with this route.
+![Alt text](https://github.com/csci5117f24/project-2-20245117/blob/main/low-fidelity/phone_saved_route_page.png "saved route page")
+
 ![](https://media.giphy.com/media/26ufnwz3wDUli7GU0/giphy.gif)
 
 
