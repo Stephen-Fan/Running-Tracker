@@ -50,7 +50,7 @@ When the user clicks on a colored date, this page will show up to display the us
 This page displays the user's weekly or monthly running stats.
 ![Alt text](https://github.com/csci5117f24/project-2-20245117/blob/main/low-fidelity/pc_weekly_monthly_stats.png "weekly or monthly stats")
 
-The user can make a new running plan on this page.
+The user can make a new running plan on this page if the user selects an uncolored date on the calendar.
 ![Alt text](https://github.com/csci5117f24/project-2-20245117/blob/main/low-fidelity/pc_create_new_plan.png "create new running plan")
 
 The user can enter the desired destination and save this route for future running.
@@ -72,7 +72,7 @@ When the user clicks on a colored date, this page will show up to display the us
 This page displays the user's weekly or monthly running stats.
 ![Alt text](https://github.com/csci5117f24/project-2-20245117/blob/main/low-fidelity/phone_weekly_monthly_stats.png "weekly or monthly stats")
 
-The user can make a new running plan on this page.
+The user can make a new running plan on this page if the user selects an uncolored date on the calendar.
 ![Alt text](https://github.com/csci5117f24/project-2-20245117/blob/main/low-fidelity/phone_create_new_plan.png "create new running plan")
 
 The user can enter the desired destination and choose either to save this route for future running or start running right away.
