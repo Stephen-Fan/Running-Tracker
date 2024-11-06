@@ -38,6 +38,9 @@ Which (if any) progressive web app feature(s) does your app support?
 
 **[Add images/photos that show your mockup](https://stackoverflow.com/questions/10189356/how-to-add-screenshot-to-readmes-in-github-repository) along with a very brief caption:**
 
+This is the default page when users browse the website.
+![Alt text](https://github.com/csci5117f24/project-2-20245117/blob/main/low-fidelity/pc_home_not_login.png "Home page without login")
+
 ![](https://media.giphy.com/media/26ufnwz3wDUli7GU0/giphy.gif)
 
 
