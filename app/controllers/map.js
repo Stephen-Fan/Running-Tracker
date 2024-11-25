@@ -1,3 +1,14 @@
 import Controller from '@ember/controller';
+import { inject as service } from '@ember/service';
+import { action } from '@ember/object';
 
-export default class MapController extends Controller {}
+export default class MapController extends Controller {
+    @service firebase;
+    @service router;
+
+    @action
+    async logout() {
+        await this.firebase.logout();
+        this.router.transitionTo('index');
+    }
+}

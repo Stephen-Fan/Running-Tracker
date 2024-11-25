@@ -1,2 +1,11 @@
 {{page-title "Index"}}
-{{outlet}}
+
+<h1>Running Tracker</h1>
+
+<p>Track every step, Reach every goal.</p>
+
+{{#if this.isLoggedIn}}
+  <button type="button" {{on "click" this.logout}}>Log Out</button>
+{{else}}
+  <button type="button" {{on "click" this.login}}>Log In</button>
+{{/if}}

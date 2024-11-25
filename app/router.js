@@ -8,10 +8,11 @@ export default class Router extends EmberRouter {
 
 Router.map(function () {
   this.route('index', { path: '/' });
-  this.route('specific-date-stats');
+  this.route('specific-date-stats', { path: '/stats-on-date' });
   this.route('create-new-plan');
   this.route('plans');
   this.route('map');
   this.route('saved-routes');
   this.route('weekly-monthly-stats');
+  this.route('calendar');
 });

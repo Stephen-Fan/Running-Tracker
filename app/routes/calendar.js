@@ -1,7 +1,7 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 
-export default class SpecificDateStatsRoute extends Route {
+export default class CalendarRoute extends Route {
   @service firebase;
   @service router;
 

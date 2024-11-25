@@ -2,7 +2,7 @@ import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 
-export default class SavedRoutesController extends Controller {
+export default class CalendarController extends Controller {
     @service firebase;
     @service router;
 
