@@ -18,6 +18,9 @@ module.exports = function (environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
+    googleMaps: {
+      apiKey: 'AIzaSyB_Aad8C5nd1-IQQmBU-Qk-RmpcuAPC3j8',
+    },
   };
 
   if (environment === 'development') {

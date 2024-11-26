@@ -1,5 +1,11 @@
 {{page-title "Map"}}
 
-<h1>Map Page</h1>
+<Map
+  @lat={{this.lat}}
+  @lng={{this.lng}}
+  @zoom={{this.zoom}}
+/>
+
+<br><br><br>
 
 <button type="button" {{on "click" this.logout}}>Log Out</button>
