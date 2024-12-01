@@ -9,6 +9,14 @@ export default class WeekComponent extends Component {
   @action
   initializeCalendar(element) {
 
+    function formatTime(time) {
+        const hours = `${time.getHours()}`.padStart(2, '0');
+        const minutes = `${time.getMinutes()}`.padStart(2, '0');
+      
+        return `${hours}:${minutes}`;
+      }
+      
+
     const calendar = new Calendar(element, {
         defaultView: 'week',
         template: {
@@ -38,6 +46,14 @@ export default class WeekComponent extends Component {
       calendar.setOptions({
         useFormPopup: true,
         useDetailPopup: true,
+      });
+
+      calendar.on('beforeCreateEvent', (eventObj) => {
+        calendar.createEvents([
+          {
+            ...eventObj,
+          },
+        ]);
       });
   }
 }
