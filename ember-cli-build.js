@@ -7,5 +7,7 @@ module.exports = function (defaults) {
     // Add options here
   });
 
+  app.import('node_modules/@toast-ui/calendar/dist/toastui-calendar.min.css');
+
   return app.toTree();
 };
