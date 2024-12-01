@@ -1,6 +1,9 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import Calendar from '@toast-ui/calendar';
+import '@toast-ui/calendar/dist/toastui-calendar.min.css';
+import 'tui-date-picker/dist/tui-date-picker.css';
+import 'tui-time-picker/dist/tui-time-picker.css';
 
 export default class WeekComponent extends Component {
   @action
@@ -30,6 +33,11 @@ export default class WeekComponent extends Component {
             backgroundColor: '#00a9ff',
           },
         ],
+      });
+
+      calendar.setOptions({
+        useFormPopup: true,
+        useDetailPopup: true,
       });
   }
 }
