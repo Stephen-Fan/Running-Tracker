@@ -107,6 +107,7 @@ export default class FirebaseService extends Service {
           duration: duration,
         });
         console.log('Document written with ID: ', docRef.id);
+        window.location.reload();
         return docRef.id;
       } catch (e) {
         console.error('Error adding document: ', e);

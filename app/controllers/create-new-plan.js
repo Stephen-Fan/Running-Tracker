@@ -40,6 +40,7 @@ export default class CreateNewPlanController extends Controller {
     let uid = (this.firebase.getCurrentUser()).uid
     console.log(uid)
     this.firebase.addPlan(planName, startTime, distance, duration)
-
+    alert('New plan added successfully!');
+    // window.location.reload();
   }
 }
