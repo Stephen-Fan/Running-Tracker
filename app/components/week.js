@@ -43,17 +43,28 @@ export default class WeekComponent extends Component {
         ],
       });
 
-      calendar.setOptions({
+    calendar.setOptions({
         useFormPopup: true,
         useDetailPopup: true,
-      });
+    });
 
-      calendar.on('beforeCreateEvent', (eventObj) => {
+    calendar.on('beforeCreateEvent', (eventObj) => {
+        const now = new Date();
+        let ms = now.getMilliseconds();
         calendar.createEvents([
-          {
+            {
             ...eventObj,
-          },
+            id: ms,
+            },
         ]);
-      });
+    });
+
+    calendar.on('beforeUpdateEvent', ({ event, changes }) => {
+        calendar.updateEvent(event.id, event.calendarId, changes);
+    });
+
+    calendar.on('beforeDeleteEvent', (eventObj) => {
+        calendar.deleteEvent(eventObj.id, eventObj.calendarId);
+    });
   }
 }
