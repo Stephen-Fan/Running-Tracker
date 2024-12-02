@@ -94,4 +94,26 @@ export default class FirebaseService extends Service {
   async logout() {
     return signOut(this.auth);
   }
+
+  async addPlan(planName, startTime, distance, duration) {
+    const user = this.getCurrentUser();
+
+    if (user) {
+      try {
+        const docRef = await addDoc(collection(this.db, `users/${user.uid}/plans`), {
+          planName: planName,
+          startTime: startTime,
+          distance: distance,
+          duration: duration,
+        });
+        console.log('Document written with ID: ', docRef.id);
+        return docRef.id;
+      } catch (e) {
+        console.error('Error adding document: ', e);
+      }
+    } else {
+      throw new Error('No authenticated user found');
+    }
+  }
+
 }
