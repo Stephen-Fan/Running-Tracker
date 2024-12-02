@@ -37,3 +37,80 @@
     margin-left: 25%;
   }
   
+
+/* Background Styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url('/runningtrack.jpg'); /* Path to your image */
+  background-size: cover; /* Ensure the image covers the entire viewport */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  height: 100vh; /* Full height of the viewport */
+  color: white; /* Ensure text is visible */
+  text-align: center;
+}
+
+
+
+/* Header Styling */
+h1 {
+  font-size: 3rem;
+  margin-top: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add subtle shadow */
+}
+
+p {
+  font-size: 1.2rem;
+  margin: 10px 0 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Button Styling */
+button {
+  font-size: 1rem;
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+
+/* Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  position: fixed;
+  width: 100%;
+  /* z-index: 1000; */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+.nav-links a, .nav-button {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover, .nav-button:hover {
+  color: #4CAF50; /* Green hover effect */
+}
