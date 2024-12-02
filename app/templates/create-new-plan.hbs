@@ -1,5 +1,49 @@
 {{page-title "CreateNewPlan"}}
 
+<!-- css of bootstrap -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 <h1>Create New Plan</h1>
 
 <button type="button" {{on "click" this.logout}}>Log Out</button>
+
+{{!-- <form>
+<div><input type="text" placeholder="New plan name"></div>
+<div><input type="datetime-local"></div>
+<div><input type="checkbox"><label for="newDistance" >Goal Distance: </label><input type="number" id="newDistance"><span>Miles</span></div>
+<div><input type="checkbox"><label for="newTime" >Goal Time: </label><input type="number" id="newTime"><span>Mins</span></div>
+<button type="submit">Create</button>
+</form> --}}
+
+<form class="p-4 border rounded bg-light" id="newPlanForm">
+      <div class="mb-3" >
+        <label for="planName" class="form-label">New Plan Name</label>
+        <input type="text" class="form-control" id="planName" placeholder="Enter plan name">
+      </div>
+      <div class="mb-3">
+        <label for="dateTime" class="form-label">Start Date and Time</label>
+        <input type="datetime-local" class="form-control" id="dateTime">
+      </div>
+      <div class="form-check mb-3">
+        <input type="checkbox" class="form-check-input" id="goalDistanceCheck">
+        <label for="goalDistanceCheck" class="form-check-label">Goal Distance</label>
+        <div class="input-group mt-2">
+          <input type="number" class="form-control" id="newDistance" placeholder="Distance">
+          <span class="input-group-text">Miles</span>
+        </div>
+      </div>
+      <div class="form-check mb-3">
+        <input type="checkbox" class="form-check-input" id="goalTimeCheck">
+        <label for="goalTimeCheck" class="form-check-label">Goal Time</label>
+        <div class="input-group mt-2">
+          <input type="number" class="form-control" id="newTime" placeholder="Time">
+          <span class="input-group-text">Mins</span>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Create</button>
+    </form>
+
+<!-- scipts for bootstrap -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
