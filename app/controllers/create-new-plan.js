@@ -39,7 +39,7 @@ export default class CreateNewPlanController extends Controller {
 
     let uid = (this.firebase.getCurrentUser()).uid
     console.log(uid)
-    this.firebase.addPlan(uid, planName, startTime, distance, duration)
+    this.firebase.addPlan(planName, startTime, distance, duration)
 
   }
 }
