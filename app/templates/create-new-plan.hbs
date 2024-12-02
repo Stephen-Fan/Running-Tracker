@@ -2,7 +2,8 @@
 
 <!-- css of bootstrap -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+<LinkTo @route="calendar">Go to Calendar</LinkTo>
+<LinkTo @route="map">Go to Map</LinkTo>
 <h1>Create New Plan</h1>
 
 <button type="button" {{on "click" this.logout}}>Log Out</button>
@@ -15,28 +16,28 @@
 <button type="submit">Create</button>
 </form> --}}
 
-<form class="p-4 border rounded bg-light" id="newPlanForm">
+<form class="p-4 border rounded bg-light" id="newPlanForm" {{on "submit" this.handleSubmit}}>
       <div class="mb-3" >
         <label for="planName" class="form-label">New Plan Name</label>
-        <input type="text" class="form-control" id="planName" placeholder="Enter plan name">
+        <input type="text" class="form-control" name="planName" id="planName" placeholder="Enter plan name">
       </div>
       <div class="mb-3">
         <label for="dateTime" class="form-label">Start Date and Time</label>
-        <input type="datetime-local" class="form-control" id="dateTime">
+        <input type="datetime-local" class="form-control" name="dateTime" id="dateTime">
       </div>
       <div class="form-check mb-3">
-        <input type="checkbox" class="form-check-input" id="goalDistanceCheck">
+        <input type="checkbox" class="form-check-input" name="goalDistanceCheck" id="goalDistanceCheck">
         <label for="goalDistanceCheck" class="form-check-label">Goal Distance</label>
         <div class="input-group mt-2">
-          <input type="number" class="form-control" id="newDistance" placeholder="Distance">
+          <input type="number" class="form-control" name="newDistance" id="newDistance" placeholder="Distance">
           <span class="input-group-text">Miles</span>
         </div>
       </div>
       <div class="form-check mb-3">
-        <input type="checkbox" class="form-check-input" id="goalTimeCheck">
-        <label for="goalTimeCheck" class="form-check-label">Goal Time</label>
+        <input type="checkbox" class="form-check-input" name="goalTimeCheck" id="goalTimeCheck">
+        <label for="goalTimeCheck" class="form-check-label">Goal Duration</label>
         <div class="input-group mt-2">
-          <input type="number" class="form-control" id="newTime" placeholder="Time">
+          <input type="number" class="form-control" name="newTime" id="newTime" placeholder="Time">
           <span class="input-group-text">Mins</span>
         </div>
       </div>
