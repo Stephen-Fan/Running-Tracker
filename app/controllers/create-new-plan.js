@@ -13,6 +13,11 @@ export default class CreateNewPlanController extends Controller {
   }
 
   @action
+  goToPage() {
+    this.router.transitionTo('calendar');
+  }
+
+  @action
   handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);

@@ -95,6 +95,22 @@ export default class FirebaseService extends Service {
     return signOut(this.auth);
   }
 
+  async fetchAllPlans() {
+    const user = this.getCurrentUser();
+
+    try {
+      const plansCollection = collection(this.db, `users/${user.uid}/plans`);
+      const snapshot = await getDocs(plansCollection);
+      return snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+    } catch (error) {
+      console.error('Error fetching plans:', error);
+      return [];
+    }
+  }
+
   async addPlan(planName, startTime, distance, duration) {
     const user = this.getCurrentUser();
 
@@ -105,6 +121,7 @@ export default class FirebaseService extends Service {
           startTime: startTime,
           distance: distance,
           duration: duration,
+          location: "",
         });
         console.log('Document written with ID: ', docRef.id);
         window.location.reload();
@@ -116,5 +133,78 @@ export default class FirebaseService extends Service {
       throw new Error('No authenticated user found');
     }
   }
+
+  async updatePlanLocation(planId, location) {
+    const user = this.getCurrentUser();
+
+    if(user){
+      try {
+        // Reference the specific plan document
+        const planDocRef = doc(this.db, `users/${user.uid}/plans`, planId);
+  
+        // Update the location field
+        await updateDoc(planDocRef, { location });
+  
+        console.log('Plan location updated successfully:', location);
+      } catch (error) {
+        console.error('Error updating plan location:', error);
+        throw error; // Re-throw the error to handle it in the caller
+      }
+    }
+  }
+  
+  async resetAllPlanLocations(userId) {
+    const user = this.getCurrentUser();
+
+    if(user){
+      try {
+        // Reference the plans collection
+        const plansCollection = collection(this.db, `users/${userId}/plans`);
+        const snapshot = await getDocs(plansCollection);
+  
+        // Iterate through all plans and reset their location attribute
+        const resetPromises = snapshot.docs.map((planDoc) => {
+          const planRef = doc(this.db, `users/${userId}/plans`, planDoc.id);
+          return updateDoc(planRef, { location: null });
+        });
+  
+        await Promise.all(resetPromises); // Wait for all updates to complete
+
+        const markersCollection = collection(this.db, `users/${userId}/markers`);
+        const markersSnapshot = await getDocs(markersCollection);
+        const deletePromises = markersSnapshot.docs.map((markerDoc) => {
+          const markerRef = doc(this.db, `users/${userId}/markers`, markerDoc.id);
+          return deleteDoc(markerRef);
+        });
+        await Promise.all(deletePromises);
+
+        console.log('All plan locations reset.');
+      } catch (error) {
+        console.error('Error resetting all plan locations:', error);
+        throw error; // Re-throw the error to handle it in the caller
+      }
+    }
+  }
+
+  async resetPlanLocation(userId, planId) {
+    const user = this.getCurrentUser();
+
+    if(user){
+      try {
+        const planDocRef = doc(this.db, `users/${userId}/plans`, planId); // Adjust the path if plans are stored under a user-specific path
+  
+        // Update the location field to reset its values
+        await updateDoc(planDocRef, {
+          location: { lat: null, lng: null, name: "" },
+        });
+  
+        console.log(`Plan ${planId} location reset.`);
+      } catch (error) {
+        console.error(`Error resetting location for plan ${planId}:`, error);
+        throw error; // Re-throw the error for the caller to handle
+      }
+    }
+  }
+
 
 }

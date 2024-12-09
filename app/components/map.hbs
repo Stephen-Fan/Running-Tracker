@@ -1,15 +1,61 @@
 <div>
+  <br>
   <input
     id="searchBox"
     type="text"
     placeholder="Search for places..."
     class="map-search-box"
   />
-  
+ 
+  <button id="clearMarkersButton" class="clear-markers-button">
+    Clear All Markers
+  </button>
   <div {{did-insert this.setupMap}} style="width: 100%; height: 500px;"></div>
 
-  <br>
-  <button id="clearMarkersButton" class="clear-markers-button">
-    Clear Markers
-  </button>
+
+  {{#if this.showPlanWindow}}
+    <div class="plan-selection-window">
+      <!-- Close Icon -->
+      <button class="close-button" aria-label="Close" {{on "click" this.closePlanWindow}}>
+        &times;
+      </button>
+
+      <h3>Manage Marker</h3>
+      {{#if this.selectedPlanName}}
+      <p>Associated Plan: {{this.selectedPlanName}}</p>
+      {{else}}
+
+        <div>
+          <!-- Dropdown for selecting a plan -->
+          <select class="plan-dropdown" {{on "change" this.selectPlan}}>
+            <option value="" disabled selected>Select a plan</option>
+            {{#each this.plans as |plan|}}
+              <option value={{plan.id}}>{{plan.planName}}</option>
+            {{/each}}
+          </select>
+        </div>
+      {{/if}}
+
+      <!-- Confirm button -->
+      <button 
+        class="confirm-button" 
+        {{on "click" this.confirmPlanSelection}}
+        {{!-- disabled={{not this.selectedPlanId}} --}}
+        disable={{this.isConfirmDisabled}}
+      >
+        Confirm
+      </button>
+
+      <!-- Delete Marker button -->
+      <button 
+        class="delete-button" 
+        {{on "click" this.deleteMarker}}
+      >
+        Delete Marker
+      </button>
+
+    </div>
+  {{/if}}
+
+  
 </div>

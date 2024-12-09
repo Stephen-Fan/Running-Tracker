@@ -18,7 +18,7 @@ export default class WeekComponent extends Component {
       
 
     const calendar = new Calendar(element, {
-        defaultView: 'week',
+        defaultView: 'month',
         template: {
           time(event) {
             const { start, end, title } = event;

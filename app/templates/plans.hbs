@@ -1,6 +1,16 @@
 {{page-title "Plans"}}
 
+<nav class="navbar">
+  <ul class="nav-links">
+    {{!-- <li><LinkTo @route="index">Home</LinkTo></li> --}}
+    <li><LinkTo @route="calendar">Calendar</LinkTo></li>
+    <li><LinkTo @route="map">Map</LinkTo></li>
+    <li><LinkTo @route="plans">Plans</LinkTo></li>
+    {{!-- <li><LinkTo @route="saved-routes">Saved Routes</LinkTo></li> --}}
+    <li><LinkTo @route="create-new-plan">Create New Plan</LinkTo></li>
+  </ul>
+  <button class="buttonStyle" type="button" {{on "click" this.logout}}>Log Out</button>
+</nav>
+
 <br><br><br>
 <h1>All Plans</h1>
-
-<button type="button" {{on "click" this.logout}}>Log Out</button>

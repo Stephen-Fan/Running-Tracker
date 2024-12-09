@@ -1,16 +1,14 @@
 {{page-title "Index"}}
-{{!-- <LinkTo @route="calendar">Go to Calendar</LinkTo>
-<LinkTo @route="map">Go to Map</LinkTo>
-<LinkTo @route="create-new-plan">Create New Plan</LinkTo> --}}
+
+<div class="indexPage">
+  <h1>Running Tracker</h1>
+
+  <p>Track every step, Reach every goal.</p>
 
 
-<h1>Running Tracker</h1>
-
-<p>Track every step, Reach every goal.</p>
-
-
-{{#if this.isLoggedIn}}
-  <button type="button" {{on "click" this.logout}}>Log Out</button>
-{{else}}
-  <button type="button" {{on "click" this.login}}>Log In</button>
-{{/if}}
+  {{#if this.isLoggedIn}}
+    <button class="buttonStyle" type="button" {{on "click" this.logout}}>Log Out</button>
+  {{else}}
+    <button class="buttonStyle" type="button" {{on "click" this.login}}>Log In</button>
+  {{/if}}
+</div>

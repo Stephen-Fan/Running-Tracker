@@ -20,8 +20,8 @@ export default class MapRoute extends Route {
       if (!navigator.geolocation) {
         alert('Geolocation is not supported by your browser. Default location will be used.');
         resolve({
-          lat: 37.7749,//44.9778, // Default latitude (Minneapolis)
-          lng: 122.4194,//-93.2650, // Default longitude (Minneapolis)
+          lat: 37.733795,
+          lng: -122.446747,
           zoom: 12, // Default zoom level
         });
         return;
@@ -51,8 +51,8 @@ export default class MapRoute extends Route {
           }
 
           resolve({
-            lat: 37.7749,//44.9778, // Default latitude (Minneapolis)
-            lng: 122.4194,//-93.2650, // Default longitude (Minneapolis)
+            lat: 37.733795,
+            lng: -122.446747,
             zoom: 12, // Default zoom level
           });
         }
