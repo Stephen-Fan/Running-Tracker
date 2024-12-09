@@ -44,20 +44,29 @@
         </div>
       {{/if}}
 
-      {{!-- Confirm button --}}
-      <button 
-        class="confirm-button" disable={{this.isConfirmDisabled}} type="button" {{on "click" this.confirmPlanSelection}}
-        {{!-- disabled={{not this.selectedPlanId}} --}}
-      >
-        Confirm
-      </button>
+      {{#if this.selectedPlanName}}
+        {{!-- Delete Marker button --}}
+        <button 
+          class="delete-button" type="button" {{on "click" this.deleteMarker}}
+        >
+          Delete Marker
+        </button>
+      {{else}}
+        {{!-- Confirm button --}}
+        <button 
+          class="confirm-button" disable={{this.isConfirmDisabled}} type="button" {{on "click" this.confirmPlanSelection}}
+          {{!-- disabled={{not this.selectedPlanId}} --}}
+        >
+          Confirm
+        </button>
 
-      {{!-- Delete Marker button --}}
-      <button 
-        class="delete-button" type="button" {{on "click" this.deleteMarker}}
-      >
-        Delete Marker
-      </button>
+        {{!-- Delete Marker button --}}
+        <button 
+          class="delete-button" type="button" {{on "click" this.deleteMarker}}
+        >
+          Delete Marker
+        </button>
+      {{/if}}
 
     </div>
   {{/if}}

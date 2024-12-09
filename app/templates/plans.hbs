@@ -22,13 +22,19 @@
       <li>
         <h3>{{plan.planName}}</h3>
         <p><strong>Start Time:</strong> {{format-timestamp plan.startTime}}</p>
-        <p><strong>Distance:</strong> {{plan.distance}} miles</p>
-        <p><strong>Duration:</strong> {{plan.duration}} mins</p>
+        {{#if plan.distance}}
+          <p><strong>Distance:</strong> {{plan.distance}} miles</p>
+        {{/if}}
+        {{#if plan.duration}}
+          <p><strong>Duration:</strong> {{plan.duration}} mins</p>
+        {{/if}}
         {{#if plan.location}}
           <p><strong>Location:</strong> {{plan.location.name}} (Lat: {{plan.location.lat}}, Lng: {{plan.location.lng}})</p>
         {{else}}
           <p><strong>Location:</strong> Not associated with a location</p>
         {{/if}}
+
+        <button class="delete-button" {{on "click" (fn this.deletePlan plan.id)}}>Delete</button>
       </li>
     {{/each}}
   </ul>
