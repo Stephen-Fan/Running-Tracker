@@ -19,6 +19,7 @@ export default class MapComponent extends Component {
   @tracked selectedPlanId = null; // ID of the selected plan
   @tracked showPlanWindow = false; // Control the visibility of the plan selection window
   @tracked selectedPlanName = null; // Name of the associated plan
+  @tracked selectedLocationName = 'Unnamed Location';
 
   // Fetch plans from Firestore on initialization
   constructor() {
@@ -61,7 +62,7 @@ export default class MapComponent extends Component {
     }
 
     const searchBox = new google.maps.places.SearchBox(input);
-    this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+    // this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
     // Bias the search box to map bounds
     this.map.addListener('bounds_changed', () => {
@@ -102,7 +103,10 @@ export default class MapComponent extends Component {
         // Save the marker to Firestore
         if (user) {
           try {
-            const markersCollection = collection(db, `users/${user.uid}/markers`);
+            const markersCollection = collection(
+              db,
+              `users/${user.uid}/markers`,
+            );
             await addDoc(markersCollection, {
               lat: place.geometry.location.lat(),
               lng: place.geometry.location.lng(),
@@ -167,17 +171,16 @@ export default class MapComponent extends Component {
     }
   }
 
-
   @action
   async loadMarkers() {
     const db = getFirestore();
     const user = this.firebase.getCurrentUser();
 
-    if(user){
+    if (user) {
       try {
         const markersCollection = collection(db, `users/${user.uid}/markers`);
         const snapshot = await getDocs(markersCollection);
-  
+
         // Render each marker on the map
         snapshot.docs.forEach((doc) => {
           const markerData = doc.data();
@@ -186,12 +189,12 @@ export default class MapComponent extends Component {
             position: { lat: markerData.lat, lng: markerData.lng },
             title: markerData.title || 'No Title',
           });
-  
+
           // Add marker to the local array and attach a click listener
           this.markers.push(marker);
           this.attachMarkerClickListener(marker);
         });
-  
+
         console.log('Markers loaded from Firestore:', this.markers);
       } catch (error) {
         console.error('Error loading markers from Firestore:', error);
@@ -204,6 +207,9 @@ export default class MapComponent extends Component {
     marker.addListener('click', async () => {
       console.log('Clicked on marker:', marker);
       this.selectedMarker = marker;
+
+      // Update the location name dynamically
+      this.selectedLocationName = marker.getTitle() || 'Unnamed Location';
 
       // Attempt to find the associated plan
       this.selectedPlanId = await this.getAssociatedPlanId(marker);
@@ -223,11 +229,11 @@ export default class MapComponent extends Component {
 
     const user = this.firebase.getCurrentUser();
 
-    if(user){
+    if (user) {
       try {
         const db = getFirestore();
         const markersCollection = collection(db, `users/${user.uid}/markers`);
-  
+
         // Find the Firestore document for this marker by matching lat/lng
         const snapshot = await getDocs(markersCollection);
         const markerDoc = snapshot.docs.find((doc) => {
@@ -237,7 +243,7 @@ export default class MapComponent extends Component {
             data.lng === this.selectedMarker.getPosition().lng()
           );
         });
-  
+
         if (markerDoc) {
           // Delete the marker document from Firestore
           await deleteDoc(doc(db, `users/${user.uid}/markers`, markerDoc.id));
@@ -248,15 +254,17 @@ export default class MapComponent extends Component {
           await this.firebase.resetPlanLocation(user.uid, this.selectedPlanId);
           console.log(`Plan ${this.selectedPlanId} location reset.`);
         }
-  
+
         // Remove the marker from the map and local state
         this.selectedMarker.setMap(null);
-        this.markers = this.markers.filter((marker) => marker !== this.selectedMarker);
-  
+        this.markers = this.markers.filter(
+          (marker) => marker !== this.selectedMarker,
+        );
+
         this.selectedMarker = null;
         this.selectedPlanId = null;
         this.showPlanWindow = false;
-  
+
         console.log('Marker deleted successfully.');
       } catch (error) {
         console.error('Error deleting marker:', error);
@@ -268,11 +276,11 @@ export default class MapComponent extends Component {
   async getAssociatedPlanId(marker) {
     const user = this.firebase.getCurrentUser();
     const db = getFirestore();
-    if(user){
+    if (user) {
       try {
         const plansCollection = collection(db, `users/${user.uid}/plans`);
         const snapshot = await getDocs(plansCollection);
-  
+
         // Iterate through all plans to find a matching marker
         for (const doc of snapshot.docs) {
           const plan = doc.data();
@@ -285,7 +293,7 @@ export default class MapComponent extends Component {
             return doc.id; // Return the ID of the matching plan
           }
         }
-  
+
         this.selectedPlanName = null;
         return null; // No associated plan found
       } catch (error) {
@@ -350,7 +358,6 @@ export default class MapComponent extends Component {
     this.selectedMarker = null;
     this.selectedPlanId = null;
     this.selectedPlanName = null;
+    this.selectedLocationName = 'Unamed Location';
   }
-
-
 }

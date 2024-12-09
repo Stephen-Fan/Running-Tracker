@@ -1,7 +1,6 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 
-
 export default class MapRoute extends Route {
   @service firebase;
   @service router;
@@ -18,7 +17,9 @@ export default class MapRoute extends Route {
     return new Promise((resolve, reject) => {
       // Check if Geolocation API is available
       if (!navigator.geolocation) {
-        alert('Geolocation is not supported by your browser. Default location will be used.');
+        alert(
+          'Geolocation is not supported by your browser. Default location will be used.',
+        );
         resolve({
           lat: 37.733795,
           lng: -122.446747,
@@ -44,7 +45,7 @@ export default class MapRoute extends Route {
           // Inform the user and resolve with a default location
           if (error.code === error.PERMISSION_DENIED) {
             alert(
-              'Location sharing is required to fully use the map functionality. Default location will be used.'
+              'Location sharing is required to fully use the map functionality. Default location will be used.',
             );
           } else {
             alert('Unable to fetch location. Default location will be used.');
@@ -55,7 +56,7 @@ export default class MapRoute extends Route {
             lng: -122.446747,
             zoom: 12, // Default zoom level
           });
-        }
+        },
       );
     });
   }

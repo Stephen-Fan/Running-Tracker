@@ -6,12 +6,20 @@ service cloud.firestore {
     match /users/{userId} {
       allow read, write: if request.auth != null && request.auth.uid == userId;
 
-		match /plans/{planId} {
-            allow read, write: if request.auth != null && request.auth.uid == userId;
-        }
-		match /users/{userId}/plans/{planId} {
-            allow update: if request.auth.uid == userId;
-        }
+			match /plans/{planId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+			match /users/{userId}/plans/{planId} {
+      	allow update: if request.auth.uid == userId;
+        // allow read, write, update: if request.auth != null && request.auth.uid == userId;
+      }
+      
+      match /markers/{markerId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+			match /users/{userId}/markers/{markerId} {
+      	allow update: if request.auth.uid == userId;
+      }
     }
   }
 }

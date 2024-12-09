@@ -6,6 +6,7 @@ body {
   padding: 0;
   font-family: Arial, sans-serif;
 }
+
 .plan-selection-window {
   position: absolute;
   top: 20%;
@@ -15,7 +16,7 @@ body {
   border: 1px solid #ccc;
   border-radius: 8px;
   z-index: 1000;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
 }
 
 /* Positioning and styling the close button */
@@ -35,7 +36,6 @@ body {
   color: #000;
 }
 
-
 .plan-selection-window h3 {
   margin-top: 0;
   font-size: 1.2em;
@@ -48,6 +48,11 @@ body {
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 1em;
+}
+
+.plan-dropdown option:disabled {
+  color: gray;
+  font-style: italic;
 }
 
 .confirm-button {
@@ -83,79 +88,106 @@ body {
   background-color: #c82333;
 }
 
+/* --------------------------------------- */
+.planList h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
 
+ul {
+  list-style-type: none;
+  padding: 0;
+}
 
-/* ---------------------------------------*/
+.planList li {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  text-shadow: none;
+}
+
+.planList li h3 {
+  margin-top: 0;
+  font-size: 1.5em;
+  text-shadow: none;
+}
+
+.planList p {
+  margin: 5px 0;
+  text-shadow: none;
+}
+
+/* --------------------------------------- */
 .map-search-box {
-    /* position: absolute; */
-    margin-bottom: 10px;
-    top: 10px;
-    left: 10px;
-    z-index: 5;
-    width: 300px;
-    padding: 10px;
-    font-size: 14px;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .clear-markers-button {
-    /* position: absolute; */
-    top: 50px;
-    left: 10px;
-    z-index: 5;
-    padding: 8px 12px;
-    font-size: 14px;
-    background-color: #f44336;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .clear-markers-button:hover {
-    background-color: #d32f2f;
-  }
-  
-  #newPlanForm{
-    width: 50%;
-    margin-left: 25%;
-  }
-  
+  /* position: absolute; */
+  margin-bottom: 10px;
+  top: 10px;
+  left: 10px;
+  z-index: 5;
+  width: 300px;
+  padding: 10px;
+  font-size: 14px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.clear-markers-button {
+  /* position: absolute; */
+  top: 50px;
+  left: 10px;
+  z-index: 5;
+  padding: 8px 12px;
+  font-size: 14px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.clear-markers-button:hover {
+  background-color: #d32f2f;
+}
+
+#newPlanForm {
+  width: 50%;
+  margin-left: 25%;
+}
 
 /* Background Styling */
 .indexPage {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-image: url('/runningtrack.jpg');
-  background-size: cover; /*Ensure the image covers the entire viewport*/
-  background-position: center; /*Center the image */
+  background-image: url("/runningtrack.jpg");
+  background-size: cover; /* Ensure the image covers the entire viewport */
+  background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Prevent the image from repeating */
   height: 100vh; /* Full height of the viewport */
   color: white; /* Ensure text is visible */
-  text-align: center; 
+  text-align: center;
 }
-
-
 
 /* Header Styling */
 h1 {
   font-size: 3rem;
   margin-top: 20px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add subtle shadow */
-  text-align: center; 
+  text-shadow: 2px 2px 4px rgb(0 0 0 / 70%); /* Add subtle shadow */
+  text-align: center;
 }
 
 p {
   font-size: 1.2rem;
   margin: 10px 0 30px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  text-shadow: 2px 2px 4px rgb(0 0 0 / 70%);
 }
 
 /* Button Styling */
-.buttonStyle {
+
+/* .buttonStyle {
   font-size: 1rem;
   padding: 10px 20px;
   margin: 10px;
@@ -166,12 +198,11 @@ p {
   color: white;
   cursor: pointer;
   transition: background-color 0.3s;
-}
+} */
 
 button:hover {
   background-color: #45a049;
 }
-
 
 /* Navbar Styling */
 .navbar {
@@ -180,10 +211,11 @@ button:hover {
   align-items: center;
   background-color: #f9f9f9; /* Light gray for simplicity */
   padding: 5px 20px;
-  border-bottom: 2px solid #4CAF50; /* Subtle green underline */
+  border-bottom: 2px solid #4caf50; /* Subtle green underline */
   position: fixed;
   top: 0;
   width: 98%;
+
   /* z-index: 1000; */
 }
 
@@ -203,21 +235,25 @@ button:hover {
 }
 
 .nav-links a:hover {
-  color: #4CAF50; /* Green highlight on hover */
+  color: #4caf50; /* Green highlight on hover */
 }
 
 .buttonStyle {
   font-size: 1.2rem; /* Slightly larger text */
   padding: 12px 20px; /* Bigger button size */
-  border: 2px solid #4CAF50; /* Slightly thicker border */
+  border: 2px solid #4caf50; /* Slightly thicker border */
   background-color: white;
-  color: #4CAF50;
+  color: #4caf50;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+  margin: 10px;
+  margin-right: 20px;
 }
 
 .buttonStyle:hover {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
 }

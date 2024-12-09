@@ -12,4 +12,9 @@ export default class PlansRoute extends Route {
       this.router.transitionTo('index');
     }
   }
+
+  async model() {
+    // Fetch all plans from Firestore
+    return await this.firebase.fetchAllPlans();
+  }
 }

@@ -12,5 +12,26 @@
   <button class="buttonStyle" type="button" {{on "click" this.logout}}>Log Out</button>
 </nav>
 
-<br><br><br>
+<br><br><br><br><br>
+
 <h1>All Plans</h1>
+
+{{#if this.model.length}}
+  <ul class="planList">
+    {{#each this.model as |plan|}}
+      <li>
+        <h3>{{plan.planName}}</h3>
+        <p><strong>Start Time:</strong> {{format-timestamp plan.startTime}}</p>
+        <p><strong>Distance:</strong> {{plan.distance}} miles</p>
+        <p><strong>Duration:</strong> {{plan.duration}} mins</p>
+        {{#if plan.location}}
+          <p><strong>Location:</strong> {{plan.location.name}} (Lat: {{plan.location.lat}}, Lng: {{plan.location.lng}})</p>
+        {{else}}
+          <p><strong>Location:</strong> Not associated with a location</p>
+        {{/if}}
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>No plans found in the database.</p>
+{{/if}}
