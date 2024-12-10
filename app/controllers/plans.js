@@ -2,10 +2,7 @@ import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
-import {
-  deleteDoc,
-  doc,
-} from 'firebase/firestore';
+import { deleteDoc, doc } from 'firebase/firestore';
 
 export default class PlansController extends Controller {
   @service firebase;
@@ -19,10 +16,17 @@ export default class PlansController extends Controller {
   }
 
   @action
+  editPlan(planId) {
+    this.router.transitionTo('edit', planId);
+  }
+
+  @action
   async deletePlan(planId) {
     const user = this.firebase.getCurrentUser();
 
-    const confirmation = window.confirm("Are you sure you want to delete this plan?");
+    const confirmation = window.confirm(
+      'Are you sure you want to delete this plan?',
+    );
     if (!confirmation) {
       return; // Exit if the user cancels
     }
@@ -50,6 +54,4 @@ export default class PlansController extends Controller {
     const plans = await this.firebase.fetchAllPlans();
     this.set('model', plans); // Update the model with the latest data
   }
-
-
 }

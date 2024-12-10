@@ -123,7 +123,7 @@ export default class FirebaseService extends Service {
             startTime: startTime,
             distance: distance,
             duration: duration,
-            location: '',
+            location: null,
           },
         );
         console.log('Document written with ID: ', docRef.id);
@@ -205,7 +205,7 @@ export default class FirebaseService extends Service {
 
         // Update the location field to reset its values
         await updateDoc(planDocRef, {
-          location: { lat: null, lng: null, name: '' },
+          location: null,
         });
 
         console.log(`Plan ${planId} location reset.`);
@@ -214,5 +214,9 @@ export default class FirebaseService extends Service {
         throw error; // Re-throw the error for the caller to handle
       }
     }
+  }
+
+  getPlanDocRef(userId, planId) {
+    return doc(this.db, `users/${userId}/plans`, planId);
   }
 }

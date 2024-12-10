@@ -28,13 +28,16 @@
         {{#if plan.duration}}
           <p><strong>Duration:</strong> {{plan.duration}} mins</p>
         {{/if}}
-        {{#if plan.location}}
-          <p><strong>Location:</strong> {{plan.location.name}} (Lat: {{plan.location.lat}}, Lng: {{plan.location.lng}})</p>
+        {{#if (eq plan.location null)}}
+          <p>Location: Not associated with a location</p>
         {{else}}
-          <p><strong>Location:</strong> Not associated with a location</p>
+          {{!-- <p>Location: {{plan.location.name}} (Lat: {{plan.location.lat}}, Lng: {{plan.location.lng}})</p> --}}
+          <p>Location: {{plan.location.name}}</p>
         {{/if}}
 
-        <button class="delete-button" {{on "click" (fn this.deletePlan plan.id)}}>Delete</button>
+        <br>
+        <button class="edit-button" type="button" {{on "click" (fn this.editPlan plan.id)}}>Edit</button>
+        <button class="delete-button" type="button" {{on "click" (fn this.deletePlan plan.id)}}>Delete</button>
       </li>
     {{/each}}
   </ul>

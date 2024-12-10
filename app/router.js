@@ -12,7 +12,7 @@ Router.map(function () {
   this.route('create-new-plan');
   this.route('plans');
   this.route('map');
-  this.route('saved-routes');
   this.route('weekly-monthly-stats');
   this.route('calendar');
+  this.route('edit', { path: '/plans/edit/:plan_id' });
 });
