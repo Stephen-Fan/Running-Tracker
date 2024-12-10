@@ -111,7 +111,7 @@ export default class FirebaseService extends Service {
     }
   }
 
-  async addPlan(planName, startTime, distance, duration) {
+  async addPlan(planName, startTime, distance, duration, planCat) {
     const user = this.getCurrentUser();
 
     if (user) {
@@ -124,6 +124,7 @@ export default class FirebaseService extends Service {
             distance: distance,
             duration: duration,
             location: null,
+            planCat: planCat,
           },
         );
         console.log('Document written with ID: ', docRef.id);
@@ -219,4 +220,5 @@ export default class FirebaseService extends Service {
   getPlanDocRef(userId, planId) {
     return doc(this.db, `users/${userId}/plans`, planId);
   }
+
 }

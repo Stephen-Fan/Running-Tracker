@@ -30,6 +30,15 @@ export default class CreateNewPlanController extends Controller {
 
     let distance = null; // what we store into db
     let duration = null; // what we store into db
+    let planCat = null;
+
+    if (formData.has('goalDistanceCheck')) {
+      distance = formData.get('newDistance');
+    }
+
+    if (formData.has('planCat')) {
+      planCat = formData.get('planCat');
+    }
 
     if (formData.has('goalDistanceCheck')) {
       distance = formData.get('newDistance');
@@ -44,7 +53,7 @@ export default class CreateNewPlanController extends Controller {
 
     // let uid = (this.firebase.getCurrentUser()).uid
     // console.log(uid)
-    this.firebase.addPlan(planName, startTime, distance, duration);
+    this.firebase.addPlan(planName, startTime, distance, duration, planCat);
     alert('New plan added successfully!');
     // window.location.reload();
   }
