@@ -8,7 +8,6 @@ import 'tui-date-picker/dist/tui-date-picker.css';
 import 'tui-time-picker/dist/tui-time-picker.css';
 
 export default class WeekComponent extends Component {
-
   @service firebase;
   @action
   async initializeCalendar(element) {
@@ -35,42 +34,51 @@ export default class WeekComponent extends Component {
         {
           id: 'Walk',
           name: 'Walk',
-          backgroundColor: "rgb(0, 169, 255)",
+          backgroundColor: 'rgb(0, 169, 255)',
         },
         {
           id: 'Jogging',
           name: 'Jogging',
-          backgroundColor: "rgb(255, 187, 59)",
+          backgroundColor: 'rgb(255, 187, 59)',
         },
         {
           id: 'Running',
           name: 'Running',
-          backgroundColor: "rgb(255, 86, 131)",
+          backgroundColor: 'rgb(255, 86, 131)',
         },
         {
           id: 'Stroll',
           name: 'Stroll',
-          backgroundColor: "rgb(2, 189, 157)",
+          backgroundColor: 'rgb(2, 189, 157)',
         },
         {
           id: 'Race walking',
           name: 'Race walking',
-          backgroundColor: "rgb(158, 95, 254)",
+          backgroundColor: 'rgb(158, 95, 254)',
         },
         {
           id: 'Hiking',
           name: 'Hiking',
-          backgroundColor: "rgb(186, 220, 0)",
+          backgroundColor: 'rgb(186, 220, 0)',
         },
       ],
     });
-    
+
     let allPlans = await this.firebase.fetchAllPlans();
-    console.log(allPlans)
+    console.log(allPlans);
     let eventObjs = allPlans.map((plan) => {
-      return { id: plan.id, calendarId: plan.planCat ?? "Walk", title: plan.planName, location: plan.location?.name, start: plan.startTime, end: plan.startTime + plan.duration * 60000, isReadOnly: true,  state: null, attendees: null, 
+      return {
+        id: plan.id,
+        calendarId: plan.planCat ?? 'Walk',
+        title: plan.planName,
+        location: plan.location?.name,
+        start: plan.startTime,
+        end: plan.startTime + plan.duration * 60000,
+        isReadOnly: true,
+        state: null,
+        attendees: null,
         category: 'task',
-        body: "Duration: " + plan.duration + " mins",
+        body: 'Duration: ' + plan.duration + ' mins',
         // color: '#00a9ff',
         // backgroundColor: '#00a9ff',
       };
@@ -78,10 +86,10 @@ export default class WeekComponent extends Component {
 
     console.log(eventObjs);
 
-    // distance : "1" 
-    // duration : "30" 
-    // id : "VaYrGxncDYCydNqWSJw3" 
-    // location : null 
+    // distance : "1"
+    // duration : "30"
+    // id : "VaYrGxncDYCydNqWSJw3"
+    // location : null
     // planName : "Linghe Test"
     // startTime : 1733931960000
 
@@ -106,6 +114,5 @@ export default class WeekComponent extends Component {
         ],
       },
     });
-
   }
 }

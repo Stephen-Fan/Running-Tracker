@@ -1,5 +1,42 @@
-{{page-title "WeeklyMonthlyStats"}}
+{{page-title "Weekly and Monthly Stats"}}
+
+<button type="button" {{on "click" this.goBack}}>&larr; Back</button>
 
 <h1>Weekly and Monthly Stats</h1>
 
+{{#if this.isLoading}}
+  <p>Loading stats...</p>
+{{else if this.error}}
+  <p>{{this.error}}</p>
+{{else}}
+  <section class="stats-section">
+    <div class="weekly-stats">
+      <h2>Weekly Stats</h2>
+      {{#if this.weeklyStats.length}}
+        <BarChart
+          @labels={{this.weeklyLabels}}
+          @data={{this.weeklyData}}
+          @label="Weekly Distance (km)"
+        />
+      {{else}}
+        <p>No weekly stats available.</p>
+      {{/if}}
+    </div>
+
+    <div class="monthly-stats">
+      <h2>Monthly Stats</h2>
+      {{#if this.monthlyStats.length}}
+        <BarChart
+          @labels={{this.monthlyLabels}}
+          @data={{this.monthlyData}}
+          @label="Monthly Distance (km)"
+        />
+      {{else}}
+        <p>No monthly stats available.</p>
+      {{/if}}
+    </div>
+  </section>
+{{/if}}
+
 <button type="button" {{on "click" this.logout}}>Log Out</button>
+

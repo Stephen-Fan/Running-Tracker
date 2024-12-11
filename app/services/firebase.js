@@ -220,5 +220,4 @@ export default class FirebaseService extends Service {
   getPlanDocRef(userId, planId) {
     return doc(this.db, `users/${userId}/plans`, planId);
   }
-
 }

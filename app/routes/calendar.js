@@ -12,5 +12,4 @@ export default class CalendarRoute extends Route {
       this.router.transitionTo('index');
     }
   }
-
 }

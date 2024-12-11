@@ -33,7 +33,7 @@ export default class EditController extends Controller {
     // Extract values from the form
     const updatedPlan = {
       planName: formData.get('planName'),
-      startTime: (new Date(formData.get('dateTime'))).getTime(),
+      startTime: new Date(formData.get('dateTime')).getTime(),
       distance: formData.get('goalDistanceCheck')
         ? formData.get('newDistance')
         : null,
