@@ -1,6 +1,18 @@
 {{page-title "Weekly and Monthly Stats"}}
 
-<button type="button" {{on "click" this.goBack}}>&larr; Back</button>
+<nav class="navbar">
+  <ul class="nav-links">
+    {{!-- <li><LinkTo @route="index">Home</LinkTo></li> --}}
+    <li><LinkTo @route="calendar">Calendar</LinkTo></li>
+    <li><LinkTo @route="map">Map</LinkTo></li>
+    <li><LinkTo @route="plans">Plans</LinkTo></li>
+    <li><LinkTo @route="create-new-plan">Create New Plan</LinkTo></li>
+    <li><LinkTo @route="weekly-monthly-stats">User Stats</LinkTo></li>
+  </ul>
+  <button class="buttonStyle" type="button" {{on "click" this.logout}}>Log Out</button>
+</nav>
+{{!-- <button class="buttonStyle" type="button" {{on "click" this.goBack}}>&larr; Back</button> --}}
+<br><br><br><br><br>
 
 <h1>Weekly and Monthly Stats</h1>
 
@@ -38,5 +50,5 @@
   </section>
 {{/if}}
 
-<button type="button" {{on "click" this.logout}}>Log Out</button>
+{{!-- <button type="button" {{on "click" this.logout}}>Log Out</button> --}}
 
