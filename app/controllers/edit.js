@@ -42,10 +42,10 @@ export default class EditController extends Controller {
 
     const user = this.firebase.getCurrentUser();
 
-    const confirmation = window.confirm('Ready to save this plan?');
-    if (!confirmation) {
-      return; // Exit if the user cancels
-    }
+    // const confirmation = window.confirm('Ready to save this plan?');
+    // if (!confirmation) {
+    //   return; // Exit if the user cancels
+    // }
 
     if (user) {
       try {
@@ -54,7 +54,7 @@ export default class EditController extends Controller {
 
         // Update the plan in Firestore
         await updateDoc(planDocRef, updatedPlan);
-
+        this.goToPage();
         console.log('Plan updated successfully:', updatedPlan);
         this.router.transitionTo('plans'); // Redirect back to the plans page
       } catch (error) {
