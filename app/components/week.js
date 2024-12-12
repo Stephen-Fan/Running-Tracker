@@ -34,7 +34,7 @@ export default class WeekComponent extends Component {
         {
           id: 'Walk',
           name: 'Walk',
-          backgroundColor: 'rgb(0, 169, 255)',
+          backgroundColor: 'rgb(255, 86, 131)',
         },
         {
           id: 'Jogging',
@@ -44,7 +44,7 @@ export default class WeekComponent extends Component {
         {
           id: 'Running',
           name: 'Running',
-          backgroundColor: 'rgb(255, 86, 131)',
+          backgroundColor: 'rgb(0, 169, 255)',
         },
         {
           id: 'Stroll',
@@ -65,11 +65,12 @@ export default class WeekComponent extends Component {
     });
 
     let allPlans = await this.firebase.fetchAllPlans();
+    
     console.log(allPlans);
     let eventObjs = allPlans.map((plan) => {
       return {
         id: plan.id,
-        calendarId: plan.planCat ?? 'Walk',
+        calendarId: plan.planCat ?? 'Running',
         title: plan.planName,
         location: plan.location?.name,
         start: plan.startTime,
