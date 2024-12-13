@@ -13,32 +13,32 @@
 
 <br><br><br><br><br>
 
-<h1>Weekly and Monthly Stats</h1>
+<h1>User Stats</h1>
 
 {{#if this.isLoading}}
-  <p>Loading stats...</p>
+  <p class="para">Loading stats...</p>
 {{else if this.error}}
-  <p>{{this.error}}</p>
+  <p class="para">{{this.error}}</p>
 {{else}}
   <!-- 第一级按钮：选择 Weekly 或 Monthly -->
   <div class="button-group">
-    <button type="button" {{on "click" (fn this.selectView "weekly")}}>Weekly</button>
-    <button type="button" {{on "click" (fn this.selectView "monthly")}}>Monthly</button>
+    <button class="stats-button" type="button" {{on "click" (fn this.selectView "weekly")}}>Weekly</button>
+    <button class="stats-button" type="button" {{on "click" (fn this.selectView "monthly")}}>Monthly</button>
   </div>
-
+  <br>
   {{#if (or (eq this.selectedView "weekly") (eq this.selectedView "monthly"))}}
     <!-- 当已选择weekly或monthly后，显示第二级按钮 -->
     <div class="button-group">
-      <button type="button" {{on "click" (fn this.selectChartType "time")}}>Time Chart</button>
-      <button type="button" {{on "click" (fn this.selectChartType "distance")}}>Distance Chart</button>
-      <button type="button" {{on "click" (fn this.selectChartType "pace")}}>Pace Chart</button>
+      <button class="stats-button" type="button" {{on "click" (fn this.selectChartType "time")}}>Time Chart</button>
+      <button class="stats-button" type="button" {{on "click" (fn this.selectChartType "distance")}}>Distance Chart</button>
+      <button class="stats-button" type="button" {{on "click" (fn this.selectChartType "pace")}}>Pace Chart</button>
     </div>
   {{/if}}
 
   <section class="stats-section">
     {{#if (eq this.selectedView "weekly")}}
       <div class="weekly-stats">
-        <h2>Weekly Stats</h2>
+        <h2 class="para">Weekly Stats</h2>
         {{#if this.weeklyStats.length}}
           {{#if (eq this.selectedChartType "distance")}}
             <!-- 距离图表 -->
@@ -67,15 +67,15 @@
               />
             </div>
           {{else}}
-            <p>Please select a chart type (Time, Distance, or Pace).</p>
+            <p class="para">Please select a chart type (Time, Distance, or Pace).</p>
           {{/if}}
         {{else}}
-          <p>No weekly stats available.</p>
+          <p class="para">No weekly stats available.</p>
         {{/if}}
       </div>
     {{else if (eq this.selectedView "monthly")}}
       <div class="monthly-stats">
-        <h2>Monthly Stats</h2>
+        <h2 class="para">Monthly Stats</h2>
         {{#if this.monthlyStats.length}}
           {{#if (eq this.selectedChartType "distance")}}
             <!-- 距离图表 -->
@@ -108,18 +108,15 @@
               />
             </div>
           {{else}}
-             <p>Please select a chart type (Time, Distance, or Pace).</p>
+             <p class="para">Please select a chart type (Time, Distance, or Pace).</p>
           {{/if}}
         {{else}}
-          <p>No monthly stats available.</p>
+          <p class="para">No monthly stats available.</p>
         {{/if}}
       </div>
     {{else}}
       <!-- 如果没有选择视图，就显示提示 -->
-      <p>Please select a view to see the stats.</p>
+      <p class="para">Please select a view to see the stats.</p>
     {{/if}}
   </section>
 {{/if}}
-
-
-

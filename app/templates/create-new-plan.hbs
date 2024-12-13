@@ -40,19 +40,21 @@
         <label for="dateTime" class="form-label">Start Date and Time</label>
         <input type="datetime-local" class="form-control" name="dateTime" id="dateTime">
       </div>
-      <div class="form-check mb-3">
-        <input type="checkbox" class="form-check-input" name="goalDistanceCheck" id="goalDistanceCheck">
+      {{!-- <div class="form-check mb-3"> --}}
+      <div class="mb-3">
+        {{!-- <input type="checkbox" class="form-check-input" name="goalDistanceCheck" id="goalDistanceCheck"> --}}
         <label for="goalDistanceCheck" class="form-check-label">Goal Distance</label>
         <div class="input-group mt-2">
-          <input type="number" class="form-control" name="newDistance" id="newDistance" placeholder="Distance">
+          <input type="number" class="form-control" name="newDistance" id="newDistance" placeholder="Distance" required>
           <span class="input-group-text">Miles</span>
         </div>
       </div>
-      <div class="form-check mb-3">
-        <input type="checkbox" class="form-check-input" name="goalTimeCheck" id="goalTimeCheck">
+      {{!-- <div class="form-check mb-3"> --}}
+      <div class="mb-3">
+        {{!-- <input type="checkbox" class="form-check-input" name="goalTimeCheck" id="goalTimeCheck"> --}}
         <label for="goalTimeCheck" class="form-check-label">Goal Duration</label>
         <div class="input-group mt-2">
-          <input type="number" class="form-control" name="newTime" id="newTime" placeholder="Time">
+          <input type="number" class="form-control" name="newTime" id="newTime" placeholder="Time" required>
           <span class="input-group-text">Mins</span>
         </div>
       </div>

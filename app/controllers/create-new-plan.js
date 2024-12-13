@@ -39,17 +39,18 @@ export default class CreateNewPlanController extends Controller {
     if (formData.has('planCat')) {
       planCat = formData.get('planCat');
     }
-
-    if (formData.has('goalDistanceCheck')) {
-      distance = formData.get('newDistance');
-    }
-    if (formData.has('goalTimeCheck')) {
-      duration = formData.get('newTime');
-    }
-    if (!(formData.has('goalDistanceCheck') || formData.has('goalTimeCheck'))) {
-      alert('Invalid Form. Please check at least one box.');
-      return null;
-    }
+    distance = formData.get('newDistance');
+    duration = formData.get('newTime');
+    // if (formData.has('goalDistanceCheck')) {
+    //   distance = formData.get('newDistance');
+    // }
+    // if (formData.has('goalTimeCheck')) {
+    //   duration = formData.get('newTime');
+    // }
+    // if (!(formData.has('goalDistanceCheck') || formData.has('goalTimeCheck'))) {
+    //   alert('Invalid Form. Please check at least one box.');
+    //   return null;
+    // }
 
     // let uid = (this.firebase.getCurrentUser()).uid
     // console.log(uid)
