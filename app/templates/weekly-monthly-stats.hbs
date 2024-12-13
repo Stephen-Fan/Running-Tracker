@@ -2,7 +2,6 @@
 
 <nav class="navbar">
   <ul class="nav-links">
-    {{!-- <li><LinkTo @route="index">Home</LinkTo></li> --}}
     <li><LinkTo @route="calendar">Calendar</LinkTo></li>
     <li><LinkTo @route="map">Map</LinkTo></li>
     <li><LinkTo @route="plans">Plans</LinkTo></li>
@@ -11,7 +10,7 @@
   </ul>
   <button class="buttonStyle" type="button" {{on "click" this.logout}}>Log Out</button>
 </nav>
-{{!-- <button class="buttonStyle" type="button" {{on "click" this.goBack}}>&larr; Back</button> --}}
+
 <br><br><br><br><br>
 
 <h1>Weekly and Monthly Stats</h1>
@@ -21,34 +20,106 @@
 {{else if this.error}}
   <p>{{this.error}}</p>
 {{else}}
-  <section class="stats-section">
-    <div class="weekly-stats">
-      <h2>Weekly Stats</h2>
-      {{#if this.weeklyStats.length}}
-        <BarChart
-          @labels={{this.weeklyLabels}}
-          @data={{this.weeklyData}}
-          @label="Weekly Distance (km)"
-        />
-      {{else}}
-        <p>No weekly stats available.</p>
-      {{/if}}
-    </div>
+  <!-- 第一级按钮：选择 Weekly 或 Monthly -->
+  <div class="button-group">
+    <button type="button" {{on "click" (fn this.selectView "weekly")}}>Weekly</button>
+    <button type="button" {{on "click" (fn this.selectView "monthly")}}>Monthly</button>
+  </div>
 
-    <div class="monthly-stats">
-      <h2>Monthly Stats</h2>
-      {{#if this.monthlyStats.length}}
-        <BarChart
-          @labels={{this.monthlyLabels}}
-          @data={{this.monthlyData}}
-          @label="Monthly Distance (km)"
-        />
-      {{else}}
-        <p>No monthly stats available.</p>
-      {{/if}}
+  {{#if (or (eq this.selectedView "weekly") (eq this.selectedView "monthly"))}}
+    <!-- 当已选择weekly或monthly后，显示第二级按钮 -->
+    <div class="button-group">
+      <button type="button" {{on "click" (fn this.selectChartType "time")}}>Time Chart</button>
+      <button type="button" {{on "click" (fn this.selectChartType "distance")}}>Distance Chart</button>
+      <button type="button" {{on "click" (fn this.selectChartType "pace")}}>Pace Chart</button>
     </div>
+  {{/if}}
+
+  <section class="stats-section">
+    {{#if (eq this.selectedView "weekly")}}
+      <div class="weekly-stats">
+        <h2>Weekly Stats</h2>
+        {{#if this.weeklyStats.length}}
+          {{#if (eq this.selectedChartType "distance")}}
+            <!-- 距离图表 -->
+            <div style="width:900px; height:900px; margin: 0 auto; text-align:center;">
+              <BarChart
+                @labels={{this.weeklyLabels}}
+                @data={{this.weeklyData}}
+                @label="Weekly Distance (mile)"
+              />
+            </div>
+          {{else if (eq this.selectedChartType "time")}}
+            <div style="width:900px; height:900px; margin: 0 auto; text-align:center;">
+              <BarChart
+                @labels={{this.weeklyTimeLabels}}
+                @data={{this.weeklyTimeData}}
+                @label="Weekly Time (mins)"
+              />
+            </div>
+          {{else if (eq this.selectedChartType "pace")}}
+            <!-- Weekly Pace Chart -->
+            <div style="width:900px; height:900px; margin: 0 auto; text-align:center;">
+              <BarChart
+                @labels={{this.weeklyPaceLabels}}
+                @data={{this.weeklyPaceData}}
+                @label="Weekly Pace (mins/mile)"
+              />
+            </div>
+          {{else}}
+            <p>Please select a chart type (Time, Distance, or Pace).</p>
+          {{/if}}
+        {{else}}
+          <p>No weekly stats available.</p>
+        {{/if}}
+      </div>
+    {{else if (eq this.selectedView "monthly")}}
+      <div class="monthly-stats">
+        <h2>Monthly Stats</h2>
+        {{#if this.monthlyStats.length}}
+          {{#if (eq this.selectedChartType "distance")}}
+            <!-- 距离图表 -->
+            <div style="width:900px; height:900px; margin: 0 auto; text-align:center;">
+              <BarChart
+                @labels={{this.monthlyLabels}}
+                @data={{this.monthlyData}}
+                @label="Monthly Distance (mile)"
+                @type="line"
+              />
+            </div>
+          {{else if (eq this.selectedChartType "time")}}
+
+            <div style="width:900px; height:900px; margin: 0 auto; text-align:center;">
+              <BarChart
+                @labels={{this.monthlyTimeLabels}}
+                @data={{this.monthlyTimeData}}
+                @label="Monthly Time (mins)"
+                @type="line"
+              />
+            </div>
+          {{else if (eq this.selectedChartType "pace")}}
+            <!-- Monthly Pace Chart -->
+            <div style="width:900px; height:900px; margin: 0 auto; text-align:center;">
+              <BarChart
+                @labels={{this.monthlyPaceLabels}}
+                @data={{this.monthlyPaceData}}
+                @label="Monthly Pace (mins/mile)"
+                @type="line"
+              />
+            </div>
+          {{else}}
+             <p>Please select a chart type (Time, Distance, or Pace).</p>
+          {{/if}}
+        {{else}}
+          <p>No monthly stats available.</p>
+        {{/if}}
+      </div>
+    {{else}}
+      <!-- 如果没有选择视图，就显示提示 -->
+      <p>Please select a view to see the stats.</p>
+    {{/if}}
   </section>
 {{/if}}
 
-{{!-- <button type="button" {{on "click" this.logout}}>Log Out</button> --}}
+
 
