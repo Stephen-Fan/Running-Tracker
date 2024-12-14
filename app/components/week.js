@@ -23,43 +23,24 @@ export default class WeekComponent extends Component {
       template: {
         time(event) {
           const { start, end, title } = event;
-
-          return `<span style="color: white;">${formatTime(start)}~${formatTime(end)} ${title}</span>`;
-        },
-        allday(event) {
-          return `<span style="color: gray;">${event.title}</span>`;
+          return `<div style="color: black;background: rgb(137, 207, 240);padding-left: 0.5rem;border-radius: 0.2rem;">${title}</div>`;
         },
       },
       calendars: [
         {
-          id: 'Walk',
-          name: 'Walk',
+          id: 'Absent',
+          name: 'Absent',
           backgroundColor: 'rgb(255, 86, 131)',
         },
         {
-          id: 'Jogging',
-          name: 'Jogging',
-          backgroundColor: 'rgb(255, 187, 59)',
+          id: 'Scheduled',
+          name: 'Scheduled',
+          backgroundColor: 'rgb(255, 192, 0)',
         },
         {
-          id: 'Running',
-          name: 'Running',
-          backgroundColor: 'rgb(0, 169, 255)',
-        },
-        {
-          id: 'Stroll',
-          name: 'Stroll',
-          backgroundColor: 'rgb(2, 189, 157)',
-        },
-        {
-          id: 'Race walking',
-          name: 'Race walking',
-          backgroundColor: 'rgb(158, 95, 254)',
-        },
-        {
-          id: 'Hiking',
-          name: 'Hiking',
-          backgroundColor: 'rgb(186, 220, 0)',
+          id: 'Complete',
+          name: 'Complete',
+          backgroundColor: 'rgb(76, 187, 23)',
         },
       ],
     });
@@ -68,9 +49,22 @@ export default class WeekComponent extends Component {
     
     console.log(allPlans);
     let eventObjs = allPlans.map((plan) => {
+
+      const current = Date.now();
+      if (((plan.startTime + plan.duration * 60000) < current) && plan.planCat != "Complete"){
+        plan.planCat = 'Absent'
+      }
+      else if ((plan.startTime + plan.duration * 60000) > current){
+        plan.planCat = 'Scheduled'
+      }
+
+      if (plan.location == null){
+        plan.location = {name: "Undecided"}
+      }
+
       return {
         id: plan.id,
-        calendarId: plan.planCat ?? 'Running',
+        calendarId: plan.planCat,
         title: plan.planName,
         location: plan.location?.name,
         start: plan.startTime,
@@ -78,32 +72,13 @@ export default class WeekComponent extends Component {
         isReadOnly: true,
         state: null,
         attendees: null,
-        category: 'task',
+        category: 'time',
         body: 'Duration: ' + plan.duration + ' mins',
-        // color: '#00a9ff',
-        // backgroundColor: '#00a9ff',
       };
     });
 
-    console.log(eventObjs);
-
-    // distance : "1"
-    // duration : "30"
-    // id : "VaYrGxncDYCydNqWSJw3"
-    // location : null
-    // planName : "Linghe Test"
-    // startTime : 1733931960000
-
     calendar.createEvents(eventObjs);
 
-    // return {
-    //   id: params.plan_id,
-    //   planName: data.planName || 'Unnamed Plan',
-    //   startTime: data.startTime || null, // Handle missing startTime
-    //   distance: data.distance || 0,
-    //   duration: data.duration || 0,
-    //   location: data.location || null,
-    // };
 
     calendar.setOptions({
       useDetailPopup: true,
@@ -117,3 +92,4 @@ export default class WeekComponent extends Component {
     });
   }
 }
+

@@ -50,6 +50,28 @@ export default class PlansController extends Controller {
   }
 
   @action
+  async completePlan(planId) {
+    const user = this.firebase.getCurrentUser();
+
+    if (user) {
+      try {
+        // Reference the specific plan document
+        const db = this.firebase.db;
+        const planDocRef = doc(db, `users/${user.uid}/plans`, planId);
+
+        // Delete the plan document
+        await deleteDoc(planDocRef);
+
+        // Update the UI by refreshing the model
+        this.refreshModel(); // Custom method to reload the data
+        console.log(`Plan ${planId} deleted successfully.`);
+      } catch (error) {
+        console.error(`Error deleting plan ${planId}:`, error);
+      }
+    }
+  }
+
+  @action
   async refreshModel() {
     const plans = await this.firebase.fetchAllPlans();
     this.set('model', plans); // Update the model with the latest data
