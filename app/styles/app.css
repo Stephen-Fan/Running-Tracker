@@ -189,8 +189,10 @@ ul {
 }
 
 #newPlanForm {
-  width: 50%;
-  margin-left: 25%;
+  width: 90%;
+  margin: 0 auto;
+  /* max-width: 500px; */
+  /* margin-left: 25%; */
 }
 
 #editPlanForm {
