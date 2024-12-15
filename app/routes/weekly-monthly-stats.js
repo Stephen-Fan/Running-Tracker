@@ -12,4 +12,8 @@ export default class WeeklyMonthlyStatsRoute extends Route {
       this.router.transitionTo('index');
     }
   }
+
+  // async model() {
+  //   return this.firebase.fetchAllPlansComplete();
+  // }
 }

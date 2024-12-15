@@ -1,4 +1,5 @@
 import Service, { service } from '@ember/service';
+import { tracked } from '@glimmer/tracking';
 import { initializeApp } from 'firebase/app';
 import {
   getAuth,
@@ -22,8 +23,11 @@ import {
   where,
   orderBy,
 } from 'firebase/firestore';
+import { start } from 'qunit';
 
 export default class FirebaseService extends Service {
+  // @tracked currentUser = null;
+
   @service firebase;
 
   constructor() {
@@ -112,20 +116,36 @@ export default class FirebaseService extends Service {
   }
 
   async fetchAllPlansComplete() {
+    await this.authReady;
     const user = this.getCurrentUser();
+    if (!user) {
+      console.error('User not authenticated. Cannot fetch plans.');
+      return [];
+    }
   
     try {
       const plansCollection = collection(this.db, `users/${user.uid}/plans`);
       const snapshot = await getDocs(plansCollection);
       const current = Date.now();
   
-      let planArray = snapshot.docs.map((doc) => ({
+      const planArray = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
       
-      let validPlan = planArray.filter((plan) => ((plan.startTime + plan.duration * 60000) > current) || plan.planCat == "Completed")
-      return validPlan
+      const validPlan = planArray.filter((plan) => {
+        const startTime = plan.startTime;
+        const duration = plan.duration || 0;
+
+        const startTimeMillis =
+          typeof startTime === 'object' && startTime.toMillis
+            ? startTime.toMillis()
+            : startTime;
+
+        const endTime = startTimeMillis + duration * 60000;
+        return endTime > current || plan.planCat === 'Completed';
+      });
+      return validPlan;
 
     } catch (error) {
       console.error('Error fetching plans:', error);

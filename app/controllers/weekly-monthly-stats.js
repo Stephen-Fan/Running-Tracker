@@ -2,11 +2,13 @@ import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
+import { onAuthStateChanged } from 'firebase/auth';
 
 export default class WeeklyMonthlyStatsController extends Controller {
   @service firebase; // 注入 Firebase 服务
   @service router;   // 注入路由服务
 
+  @tracked allPlans = [];
   @tracked weeklyStats = [];    // 存储周数据
   @tracked monthlyStats = [];   // 存储月数据
   @tracked isLoading = true;    // 加载状态
@@ -14,6 +16,31 @@ export default class WeeklyMonthlyStatsController extends Controller {
 
   @tracked selectedView = null;       // 表示当前选择的视图(weekly或monthly)
   @tracked selectedChartType = null;  // 表示当前选择的图表类型(time、distance或pace)
+
+  constructor() {
+    super(...arguments);
+    console.log("11111111");
+    // this.loadStats(); // 初始化时加载数据
+    this.setupAuthListener();
+  }
+
+  setupAuthListener() {
+    this.firebase.authReady.then(() => {
+      const auth = this.firebase.auth;
+  
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          // console.log('User logged in:', user);
+          this.loadStats();
+        } else {
+          console.log('User logged out.');
+          this.weeklyStats = [];
+          this.monthlyStats = [];
+          this.error = 'You must be logged in to view stats.';
+        }
+      });
+    });
+  }
 
   //week
   get weeklyLabels() {
@@ -65,25 +92,23 @@ export default class WeeklyMonthlyStatsController extends Controller {
     return this.monthlyStats.map(plan => plan.pace || 0);
   }
 
-  constructor() {
-    super(...arguments);
-    console.log("11111111");
-    this.loadStats(); // 初始化时加载数据
-  }
-
   async loadStats() {
     this.isLoading = true; // 开始加载
     this.error = null; // 重置错误状态
     try {
-      const allPlans = await this.firebase.fetchAllPlansComplete(); // 从 Firebase 提取所有完成的和没过时的计划
-      console.log('All plans fetched:', allPlans); // 打印获取的数据
+      const allPlans = await this.firebase.fetchAllPlansComplete();
 
-      // 过滤出周视图和月视图数据
-      this.weeklyStats = this.filterWeeklyPlans(allPlans);
-      console.log('Weekly stats after filter:', this.weeklyStats); // 打印处理后的周数据
+      if (!allPlans || allPlans.length === 0) {
+        console.log('No plans found.');
+        this.weeklyStats = [];
+        this.monthlyStats = [];
+      } else {
+        console.log('All plans fetched:', allPlans);
 
-      this.monthlyStats = this.filterMonthlyPlans(allPlans);
-      console.log('Monthly stats after filter:', this.monthlyStats); // 打印处理后的月数据
+        // Process weekly and monthly stats
+        this.weeklyStats = this.filterWeeklyPlans(allPlans);
+        this.monthlyStats = this.filterMonthlyPlans(allPlans);
+      }
     } catch (error) {
       console.error('Error loading stats:', error);
       this.error = 'Failed to load stats. Please try again later.';

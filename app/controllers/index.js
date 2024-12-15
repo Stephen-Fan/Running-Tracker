@@ -26,6 +26,7 @@ export default class IndexController extends Controller {
     try {
       await this.firebase.loginWithGoogle();
       this.router.transitionTo(route);
+      // window.location.reload();
     } catch (error) {
       console.error('Error during Google login:', error);
     }
