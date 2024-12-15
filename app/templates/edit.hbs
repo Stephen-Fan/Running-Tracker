@@ -19,14 +19,14 @@
     <label for="dateTime" class="form-label">Start Date and Time</label>
     <input type="datetime-local" class="form-control" name="dateTime" id="dateTime" value={{format-datetime this.model.startTime}} required>
   </div>
-  <div class="form-check mb-3">
-    <input
+  <div class="mb-3">
+    {{!-- <input
       type="checkbox"
       class="form-check-input"
       name="goalDistanceCheck"
       id="goalDistanceCheck"
       checked={{if this.model.distance true false}}
-    >
+    > --}}
     <label for="goalDistanceCheck" class="form-check-label">Goal Distance</label>
     <div class="input-group mt-2">
       <input
@@ -40,14 +40,14 @@
       <span class="input-group-text">Miles</span>
     </div>
   </div>
-  <div class="form-check mb-3">
-    <input
+  <div class="mb-3">
+    {{!-- <input
       type="checkbox"
       class="form-check-input"
       name="goalTimeCheck"
       id="goalTimeCheck"
       checked={{if this.model.duration true false}}
-    >
+    > --}}
     <label for="goalTimeCheck" class="form-check-label">Goal Duration</label>
     <div class="input-group mt-2">
       <input
