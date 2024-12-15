@@ -22,10 +22,10 @@ export default class IndexController extends Controller {
   }
 
   @action
-  async login() {
+  async login(route) {
     try {
       await this.firebase.loginWithGoogle();
-      this.router.transitionTo('calendar');
+      this.router.transitionTo(route);
     } catch (error) {
       console.error('Error during Google login:', error);
     }
