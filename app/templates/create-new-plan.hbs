@@ -10,31 +10,47 @@
 <br><br><br>
 <h1>Create New Plan</h1>
 
-<form class="p-4 border rounded bg-light" id="newPlanForm" {{on "submit" this.handleSubmit}}>
-      <div class="mb-3" >
-        <label for="planName" class="form-label">New Plan Name</label>
-        <input type="text" class="form-control" name="planName" id="planName" placeholder="Enter plan name" required>
+<form class="p-4 border rounded bg-light container" id="newPlanForm" {{on "submit" this.handleSubmit}}>
+  <div class="row mb-3" >
+    <div class="col-12">
+      <label for="planName" class="form-label">New Plan Name</label>
+      <input type="text" class="form-control" name="planName" id="planName" placeholder="Enter plan name" required>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-12">
+      <label for="dateTime" class="form-label">Start Date and Time</label>
+      <input type="datetime-local" class="form-control" name="dateTime" id="dateTime" required>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-12">
+      <label for="goalDistanceCheck" class="form-check-label">Goal Distance</label>
+      <div class="input-group mt-2">
+        <input type="number" class="form-control" name="newDistance" id="newDistance" placeholder="Distance" required>
+        <span class="input-group-text">Miles</span>
       </div>
-      <div class="mb-3">
-        <label for="dateTime" class="form-label">Start Date and Time</label>
-        <input type="datetime-local" class="form-control" name="dateTime" id="dateTime" required>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-12">
+      <label for="goalTimeCheck" class="form-check-label">Goal Duration</label>
+      <div class="input-group mt-2">
+        <input type="number" class="form-control" name="newTime" id="newTime" placeholder="Time" required>
+        <span class="input-group-text">Mins</span>
       </div>
-      <div class="mb-3">
-        <label for="goalDistanceCheck" class="form-check-label">Goal Distance</label>
-        <div class="input-group mt-2">
-          <input type="number" class="form-control" name="newDistance" id="newDistance" placeholder="Distance" required>
-          <span class="input-group-text">Miles</span>
-        </div>
-      </div>
-      <div class="mb-3">
-        <label for="goalTimeCheck" class="form-check-label">Goal Duration</label>
-        <div class="input-group mt-2">
-          <input type="number" class="form-control" name="newTime" id="newTime" placeholder="Time" required>
-          <span class="input-group-text">Mins</span>
-        </div>
-      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
       <button type="submit" class="btn btn-primary w-100">Create</button>
-    </form>
+    </div>
+  </div>
+</form>
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
