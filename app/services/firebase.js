@@ -111,6 +111,28 @@ export default class FirebaseService extends Service {
     }
   }
 
+  async fetchAllPlansComplete() {
+    const user = this.getCurrentUser();
+  
+    try {
+      const plansCollection = collection(this.db, `users/${user.uid}/plans`);
+      const snapshot = await getDocs(plansCollection);
+      const current = Date.now();
+  
+      let planArray = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      
+      let validPlan = planArray.filter((plan) => ((plan.startTime + plan.duration * 60000) > current) || plan.planCat == "Complete")
+      return validPlan
+
+    } catch (error) {
+      console.error('Error fetching plans:', error);
+      return [];
+    }
+  }
+
   async addPlan(planName, startTime, distance, duration, planCat) {
     const user = this.getCurrentUser();
 

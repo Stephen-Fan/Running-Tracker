@@ -75,7 +75,7 @@ export default class WeeklyMonthlyStatsController extends Controller {
     this.isLoading = true; // 开始加载
     this.error = null; // 重置错误状态
     try {
-      const allPlans = await this.firebase.fetchAllPlans(); // 从 Firebase 提取所有计划
+      const allPlans = await this.firebase.fetchAllPlansComplete(); // 从 Firebase 提取所有完成的和没过时的计划
       console.log('All plans fetched:', allPlans); // 打印获取的数据
 
       // 过滤出周视图和月视图数据
