@@ -281,6 +281,22 @@ button:hover {
   color: #4caf50; /* Green highlight on hover */
 }
 
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column; /* Stack links vertically for small screens */
+    align-items: center; /* Center-align the links */
+  }
+
+  .nav-links a {
+    font-size: 1rem; /* Slightly smaller text for small screens */
+  }
+
+  .navbar {
+    padding: 5px; /* Reduce padding further on small screens */
+  }
+}
+
 .buttonStyle {
   font-size: 1.2rem; /* Slightly larger text */
   padding: 12px 20px; /* Bigger button size */
