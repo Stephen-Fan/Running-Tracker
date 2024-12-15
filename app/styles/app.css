@@ -253,37 +253,22 @@ button:hover {
   justify-content: space-between;
   align-items: center;
   background-color: #f9f9f9; /* Light gray for simplicity */
-  padding: 5px 10px; /* Adjust padding for better fit */
+  padding: 5px 10px; /* Reduce padding for smaller screens */
   border-bottom: 2px solid #4caf50; /* Subtle green underline */
   position: fixed;
   top: 0;
-  width: 100%; /* Ensure navbar spans the full width */
-  box-sizing: border-box; /* Include padding in total width */
-  overflow-x: hidden; /* Prevent horizontal scrolling for the navbar itself */
+  width: 100%; /* Ensure the navbar spans the entire viewport width */
+  box-sizing: border-box; /* Include padding in the total width calculation */
+  overflow-x: hidden; /* Prevent horizontal scrolling due to navbar */
 }
 
 .nav-links {
   list-style: none;
-  display: flex; /* Keep links in a horizontal row */
-  gap: 20px;
+  display: flex;
+  flex-wrap: wrap; /* Wrap links to a new line if they overflow */
+  gap: 10px; /* Reduce gap for smaller screens */
   margin: 0;
   padding: 0;
-  overflow-x: auto; /* Enable horizontal scrolling for the links */
-  white-space: nowrap; /* Prevent links from wrapping to the next line */
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling for mobile devices */
-}
-
-.nav-links::-webkit-scrollbar {
-  height: 5px; /* Adjust scrollbar height */
-}
-
-.nav-links::-webkit-scrollbar-thumb {
-  background-color: #4caf50; /* Green scrollbar */
-  border-radius: 10px;
-}
-
-.nav-links::-webkit-scrollbar-track {
-  background-color: #f9f9f9; /* Match the navbar background */
 }
 
 .nav-links a {
@@ -297,14 +282,22 @@ button:hover {
   color: #4caf50; /* Green highlight on hover */
 }
 
+/* Responsive styles for smaller screens */
 @media (max-width: 768px) {
-  .navbar {
-    padding: 5px;
-  }
   .nav-links {
-    gap: 10px; /* Reduce spacing for smaller screens */
+    flex-direction: column; /* Stack links vertically for small screens */
+    align-items: center; /* Center-align the links */
+  }
+
+  .nav-links a {
+    font-size: 1rem; /* Slightly smaller text for small screens */
+  }
+
+  .navbar {
+    padding: 5px; /* Reduce padding further on small screens */
   }
 }
+
 
 
 
