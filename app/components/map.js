@@ -15,6 +15,7 @@ export default class MapComponent extends Component {
   @service firebase;
   @tracked map = null; // Google Maps instance
   @tracked markers = []; // Array to keep track of markers
+  @tracked plans = [];
   @tracked selectedMarker = null; // Currently selected marker
   @tracked selectedPlanId = null; // ID of the selected plan
   @tracked showPlanWindow = false; // Control the visibility of the plan selection window
@@ -343,9 +344,19 @@ export default class MapComponent extends Component {
       // Call the Firebase service to update the plan location
       await this.firebase.updatePlanLocation(this.selectedPlanId, location);
 
+      // Update the local state of plans to reflect the new association
+      this.plans = this.plans.map((plan) => {
+        if (plan.id === this.selectedPlanId) {
+          return { ...plan, location }; // Update the associated plan's location
+        }
+        return plan;
+      });
+
+      // this.plans = updatedPlans;
+
       // Reset selection and close the window
-      // this.selectedMarker = null;
-      // this.selectedPlanId = null;
+      this.selectedMarker = null;
+      this.selectedPlanId = null;
       this.showPlanWindow = false;
     } catch (error) {
       console.error('Error updating plan location:', error);

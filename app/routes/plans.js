@@ -17,4 +17,15 @@ export default class PlansRoute extends Route {
     // Fetch all plans from Firestore
     return await this.firebase.fetchAllPlans();
   }
+
+  setupController(controller, model) {
+    super.setupController(controller, model);
+    controller.startAutoCheck();
+  }
+  
+  resetController(controller, isExiting) {
+    if (isExiting) {
+      controller.stopAutoCheck(); // Stop auto-check when leaving the page
+    }
+  }  
 }

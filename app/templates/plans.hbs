@@ -22,6 +22,22 @@
     {{#each this.model as |plan|}}
       <li>
         <h3>{{plan.planName}}</h3>
+          
+        <p>
+          {{!-- <strong>Category:</strong> --}}
+          {{#if (eq plan.planCat "Completed")}}
+            <span style="color: rgb(76, 187, 23);">{{plan.planCat}}</span>
+          {{else if (eq plan.planCat "Scheduled")}}
+            <span style="color: rgb(255, 192, 0);">{{plan.planCat}}</span>
+          {{else if (eq plan.planCat "Absent")}}
+            <span style="color: rgb(255, 86, 131);">{{plan.planCat}}</span>
+          {{else}}
+            {{plan.planCat}}
+          {{/if}}
+        </p>
+        {{#if (eq plan.planCat "Scheduled")}}
+          <button class="stats-button" type="button" {{on "click" (fn this.completePlan plan.id)}}>Mark as Done</button>
+        {{/if}}
         <p><strong>Start Time:</strong> {{format-timestamp plan.startTime}}</p>
         {{#if plan.distance}}
           <p><strong>Distance:</strong> {{plan.distance}} miles</p>
@@ -37,8 +53,11 @@
         {{/if}}
 
         <br>
-        <button class="edit-button" type="button" {{on "click" (fn this.editPlan plan.id)}}>Edit</button>
+        {{#if (eq plan.planCat "Scheduled")}}
+          <button class="edit-button" type="button" {{on "click" (fn this.editPlan plan.id)}}>Edit</button>
+        {{/if}}
         <button class="delete-button" type="button" {{on "click" (fn this.deletePlan plan.id)}}>Delete</button>
+
       </li>
     {{/each}}
   </ul>

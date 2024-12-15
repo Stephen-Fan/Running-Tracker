@@ -138,6 +138,10 @@ export default class FirebaseService extends Service {
 
     if (user) {
       try {
+        const currentTime = new Date();
+        const planStartTime = new Date(startTime); // Ensure startTime is a Date object
+        const calculatedPlanCat = planStartTime < currentTime ? 'Absent' : 'Scheduled';
+        
         const docRef = await addDoc(
           collection(this.db, `users/${user.uid}/plans`),
           {
@@ -146,7 +150,7 @@ export default class FirebaseService extends Service {
             distance: distance,
             duration: duration,
             location: null,
-            planCat: planCat,
+            planCat: calculatedPlanCat,
           },
         );
         console.log('Document written with ID: ', docRef.id);

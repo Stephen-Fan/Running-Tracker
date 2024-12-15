@@ -38,7 +38,7 @@
                 {{#if plan.location}}
                   (Associated)
                 {{/if}}
-                </option>
+              </option>
             {{/each}}
           </select>
         </div>
@@ -55,7 +55,7 @@
         {{!-- Confirm button --}}
         <button 
           class="confirm-button" disable={{this.isConfirmDisabled}} type="button" {{on "click" this.confirmPlanSelection}}
-          {{!-- disabled={{not this.selectedPlanId}} --}}
+          disabled={{not this.selectedPlanId}}
         >
           Confirm
         </button>
