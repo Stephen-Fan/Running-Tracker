@@ -288,14 +288,23 @@ button:hover {
 
 .nav-links a {
   text-decoration: none;
-  font-size: 1rem; /* Adjust font size for smaller screens */
-  color: #333; /* Neutral text color */
-  transition: color 0.2s ease;
+  font-size: 1rem;
+  color: #333;
+  border-bottom: 2px solid #ddd; /* Light gray underline */
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .nav-links a:hover {
-  color: #4caf50; /* Green highlight on hover */
+  color: #4caf50;
+  border-color: #4caf50; /* Change underline color on hover */
 }
+
+.nav-links a.active {
+  color: #4caf50;
+  border-color: #4caf50; /* Green underline for active link */
+  font-weight: bold; /* Optional */
+}
+
 
 @media (max-width: 768px) {
   .navbar {
