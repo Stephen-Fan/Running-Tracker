@@ -124,7 +124,7 @@ export default class FirebaseService extends Service {
         ...doc.data(),
       }));
       
-      let validPlan = planArray.filter((plan) => ((plan.startTime + plan.duration * 60000) > current) || plan.planCat == "Complete")
+      let validPlan = planArray.filter((plan) => ((plan.startTime + plan.duration * 60000) > current) || plan.planCat == "Completed")
       return validPlan
 
     } catch (error) {

@@ -38,23 +38,21 @@ export default class WeekComponent extends Component {
           backgroundColor: 'rgb(255, 192, 0)',
         },
         {
-          id: 'Complete',
-          name: 'Complete',
+          id: 'Completed',
+          name: 'Completed',
           backgroundColor: 'rgb(76, 187, 23)',
         },
       ],
     });
 
     let allPlans = await this.firebase.fetchAllPlans();
-    
-    console.log(allPlans);
-    let eventObjs = allPlans.map((plan) => {
 
+    let eventObjs = allPlans.map((plan) => {
       const current = Date.now();
-      if (((plan.startTime + plan.duration * 60000) < current) && plan.planCat != "Complete"){
+      if (((plan.startTime + plan.duration * 60000) < current) && plan.planCat != "Completed"){
         plan.planCat = 'Absent'
       }
-      else if ((plan.startTime + plan.duration * 60000) > current){
+      else if ((plan.startTime + plan.duration * 60000) > current && plan.planCat != "Completed"){
         plan.planCat = 'Scheduled'
       }
 
