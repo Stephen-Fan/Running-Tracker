@@ -253,66 +253,32 @@ button:hover {
   justify-content: space-between;
   align-items: center;
   background-color: #f9f9f9; /* Light gray for simplicity */
-  padding: 5px 10px; /* Adjust padding for better fit */
+  padding: 5px 20px;
   border-bottom: 2px solid #4caf50; /* Subtle green underline */
   position: fixed;
   top: 0;
-  width: 100%; /* Ensure navbar spans the full width */
-  box-sizing: border-box; /* Include padding in total width */
-  overflow-x: hidden; /* Prevent horizontal scrolling for the navbar itself */
+  width: 98%;
+
+  /* z-index: 1000; */
 }
 
 .nav-links {
   list-style: none;
-  display: flex; /* Keep links in a horizontal row */
+  display: flex;
   gap: 20px;
   margin: 0;
   padding: 0;
-  overflow-x: auto; /* Enable horizontal scrolling for the links */
-  white-space: nowrap; /* Prevent links from wrapping to the next line */
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling for mobile devices */
-}
-
-.nav-links::-webkit-scrollbar {
-  height: 5px; /* Adjust scrollbar height */
-}
-
-.nav-links::-webkit-scrollbar-thumb {
-  background-color: #4caf50; /* Green scrollbar */
-  border-radius: 10px;
-}
-
-.nav-links::-webkit-scrollbar-track {
-  background-color: #f9f9f9; /* Match the navbar background */
 }
 
 .nav-links a {
   text-decoration: none;
-  font-size: 1rem;
-  color: #333;
-  border-bottom: 2px solid #ddd; /* Light gray underline */
-  transition: color 0.2s ease, border-color 0.2s ease;
+  font-size: 1.2rem; /* Slightly larger text */
+  color: #333; /* Neutral text color */
+  transition: color 0.2s ease;
 }
 
 .nav-links a:hover {
-  color: #4caf50;
-  border-color: #4caf50; /* Change underline color on hover */
-}
-
-.nav-links a.active {
-  color: #4caf50;
-  border-color: #4caf50; /* Green underline for active link */
-  font-weight: bold; /* Optional */
-}
-
-
-@media (max-width: 768px) {
-  .navbar {
-    padding: 5px;
-  }
-  .nav-links {
-    gap: 10px; /* Reduce spacing for smaller screens */
-  }
+  color: #4caf50; /* Green highlight on hover */
 }
 
 

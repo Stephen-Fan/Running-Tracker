@@ -1,13 +1,13 @@
 {{page-title "Calendar"}}
 
 <nav class="navbar">
-  <ul>
+  <ul class="nav-links">
     {{!-- <li><LinkTo @route="index">Home</LinkTo></li> --}}
-    <li><LinkTo @route="calendar" class="nav-link" activeClass="active">Calendar</LinkTo></li>
-    <li><LinkTo @route="map" class="nav-link" activeClass="active">Map</LinkTo></li>
-    <li><LinkTo @route="plans" class="nav-link" activeClass="active">Plans</LinkTo></li>
-    <li><LinkTo @route="create-new-plan" class="nav-link" activeClass="active">Create New Plan</LinkTo></li>
-    <li><LinkTo @route="weekly-monthly-stats" class="nav-link" activeClass="active">User Stats</LinkTo></li>
+    <li><LinkTo @route="calendar">Calendar</LinkTo></li>
+    <li><LinkTo @route="map">Map</LinkTo></li>
+    <li><LinkTo @route="plans">Plans</LinkTo></li>
+    <li><LinkTo @route="create-new-plan">Create New Plan</LinkTo></li>
+    <li><LinkTo @route="weekly-monthly-stats">User Stats</LinkTo></li>
   </ul>
   <button class="buttonStyle" type="button" {{on "click" this.logout}}>Log Out</button>
 </nav>
