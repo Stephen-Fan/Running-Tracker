@@ -42,7 +42,7 @@
         {{#if this.weeklyStats.length}}
           {{#if (eq this.selectedChartType "distance")}}
             <!-- 距离图表 -->
-            <div style="width:900px; height:900px; margin: 0 auto; text-align:center;">
+            <div style="width:100%; max-width:900px; height:auto; margin: 0 auto; text-align:center;">
               <BarChart
                 @labels={{this.weeklyLabels}}
                 @data={{this.weeklyData}}
@@ -50,7 +50,7 @@
               />
             </div>
           {{else if (eq this.selectedChartType "time")}}
-            <div style="width:900px; height:900px; margin: 0 auto; text-align:center;">
+            <div style="width:100%; max-width:900px; height:auto; margin: 0 auto; text-align:center;">
               <BarChart
                 @labels={{this.weeklyTimeLabels}}
                 @data={{this.weeklyTimeData}}
@@ -59,7 +59,7 @@
             </div>
           {{else if (eq this.selectedChartType "pace")}}
             <!-- Weekly Pace Chart -->
-            <div style="width:900px; height:900px; margin: 0 auto; text-align:center;">
+            <div style="width:100%; max-width:900px; height:auto; margin: 0 auto; text-align:center;">
               <BarChart
                 @labels={{this.weeklyPaceLabels}}
                 @data={{this.weeklyPaceData}}
@@ -79,7 +79,7 @@
         {{#if this.monthlyStats.length}}
           {{#if (eq this.selectedChartType "distance")}}
             <!-- 距离图表 -->
-            <div style="width:900px; height:900px; margin: 0 auto; text-align:center;">
+            <div style="width:100%; max-width:900px; height:auto; margin: 0 auto; text-align:center;">
               <BarChart
                 @labels={{this.monthlyLabels}}
                 @data={{this.monthlyData}}
@@ -89,7 +89,7 @@
             </div>
           {{else if (eq this.selectedChartType "time")}}
 
-            <div style="width:900px; height:900px; margin: 0 auto; text-align:center;">
+            <div style="width:100%; max-width:900px; height:auto; margin: 0 auto; text-align:center;">
               <BarChart
                 @labels={{this.monthlyTimeLabels}}
                 @data={{this.monthlyTimeData}}
@@ -99,7 +99,7 @@
             </div>
           {{else if (eq this.selectedChartType "pace")}}
             <!-- Monthly Pace Chart -->
-            <div style="width:900px; height:900px; margin: 0 auto; text-align:center;">
+            <div style="width:100%; max-width:900px; height:auto; margin: 0 auto; text-align:center;">
               <BarChart
                 @labels={{this.monthlyPaceLabels}}
                 @data={{this.monthlyPaceData}}

@@ -187,7 +187,7 @@ export default class WeeklyMonthlyStatsController extends Controller {
           const durationVal = parseFloat(plan.duration) || 0;
 
           dayEntry.distance += distanceVal;
-          dayEntry.duration = durationVal;
+          dayEntry.duration += durationVal;
         }
       });
 
