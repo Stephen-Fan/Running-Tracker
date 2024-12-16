@@ -143,7 +143,7 @@ export default class FirebaseService extends Service {
             : startTime;
 
         const endTime = startTimeMillis + duration * 60000;
-        return endTime > current || plan.planCat === 'Completed';
+        return endTime > current && plan.planCat === 'Completed';
       });
       return validPlan;
 
