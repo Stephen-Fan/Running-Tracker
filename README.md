@@ -22,15 +22,17 @@ CSCI 5117, Fall 2024, [assignment description](https://canvas.umn.edu/courses/46
 **Describe the most challenging features you implemented
 (one sentence per bullet, maximum 4 bullets):**
 
-* ...
+* We used a calendar API to connect to our database and display user plans.
+* We fetched plan's data from database and made charts based on data.
+* We embeded Google Map and Geolocation functionality and created marker (stored locally and remotely) in map to indicate plan's location.
 
 Which (if any) device integration(s) does your app support?
 
-* ...
+* The Google Map and Geolocation is integrated in the app.
 
 Which (if any) progressive web app feature(s) does your app support?
 
-* ...
+* N/A
 
 
 
@@ -94,7 +96,7 @@ The user can view, edit, and delete the created plan.
 
 **Is there anything special we need to know in order to effectively test your app? (optional):**
 
-* ...
+* None
 
 
 
@@ -102,6 +104,24 @@ The user can view, edit, and delete the created plan.
 
 **[Add a screenshot of each key page](https://stackoverflow.com/questions/10189356/how-to-add-screenshot-to-readmes-in-github-repository)
 along with a very brief caption:**
+
+After the user login, auto redirect to this page. The calendar will display all user plans in this month.
+![Alt text](https://github.com/csci5117f24/project-2-20245117/blob/main/Complete-Features/calendar.png "calendar page")
+
+The user can create new plan on this page.
+![Alt text](https://github.com/csci5117f24/project-2-20245117/blob/main/Complete-Features/create.png "create new plan page")
+
+The user can edit existing plan on this page.
+![Alt text](https://github.com/csci5117f24/project-2-20245117/blob/main/Complete-Features/edit.png "edit plan page")
+
+The user can view all plans on this page, including edit and delete any plans.
+![Alt text](https://github.com/csci5117f24/project-2-20245117/blob/main/Complete-Features/plans.png "all plans page")
+
+The user can use search bar to search for a location and create a marker, and associate the marker with a plan as the plan location.
+![Alt text](https://github.com/csci5117f24/project-2-20245117/blob/main/Complete-Features/map.png "map page")
+
+The user can view the running stats within this week or this month.
+![Alt text](https://github.com/csci5117f24/project-2-20245117/blob/main/Complete-Features/stats.png "stats page")
 
 ![](https://media.giphy.com/media/o0vwzuFwCGAFO/giphy.gif)
 
@@ -112,11 +132,10 @@ along with a very brief caption:**
 **Document integrations with 3rd Party code or services here.
 Please do not document required libraries (e.g., React, Azure serverless functions, Azure nosql).**
 
-* Library or service name: description of use
-* ...
+* Calendar from Toast UI: We used this calendar to display user plans in current month.
 
 **If there's anything else you would like to disclose about how your project
 relied on external code, expertise, or anything else, please disclose that
 here:**
 
-...
+* N/A
