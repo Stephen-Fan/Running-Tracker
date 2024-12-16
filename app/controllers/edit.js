@@ -34,10 +34,8 @@ export default class EditController extends Controller {
     const updatedPlan = {
       planName: formData.get('planName'),
       startTime: new Date(formData.get('dateTime')).getTime(),
-      distance: formData.get('goalDistanceCheck')
-        ? formData.get('newDistance')
-        : null,
-      duration: formData.get('goalTimeCheck') ? formData.get('newTime') : null,
+      distance: formData.get('newDistance'),
+      duration: formData.get('newTime'),
     };
 
     const user = this.firebase.getCurrentUser();
