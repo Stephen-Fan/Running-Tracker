@@ -120,7 +120,7 @@ The user can view all plans on this page, including edit and delete any plans.
 The user can use search bar to search for a location and create a marker, and associate the marker with a plan as the plan location.
 ![Alt text](https://github.com/csci5117f24/project-2-20245117/blob/main/Complete-Features/map.png "map page")
 
-The user can view the running stats within this week or this month.
+The user can view all completed running plans' stats within this week or this month.
 ![Alt text](https://github.com/csci5117f24/project-2-20245117/blob/main/Complete-Features/stats.png "stats page")
 
 ![](https://media.giphy.com/media/o0vwzuFwCGAFO/giphy.gif)
