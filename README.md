@@ -23,12 +23,12 @@ CSCI 5117, Fall 2024, [assignment description](https://canvas.umn.edu/courses/46
 (one sentence per bullet, maximum 4 bullets):**
 
 * We used a calendar API to connect to our database and display user plans.
-* We fetched plan's data from database and made charts based on data.
-* We embeded Google Map and Geolocation functionality and created marker (stored locally and remotely) in map to indicate plan's location.
+* We fetched the plan's stats from the database and made charts based on user running stats.
+* We embedded Google Maps and Geolocation functionality and created markers (stored locally and remotely) in the map to indicate the plan's location.
 
 Which (if any) device integration(s) does your app support?
 
-* The Google Map and Geolocation is integrated in the app.
+* Google Maps and Geolocation are integrated into the app.
 
 Which (if any) progressive web app feature(s) does your app support?
 
