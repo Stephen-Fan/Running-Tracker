@@ -6,7 +6,7 @@ CSCI 5117, Fall 2024, [assignment description](https://canvas.umn.edu/courses/46
 
 * Team Name: 20245117
 
-* App Name: TODO
+* App Name: Running Tracker
 * App Link: <https://project2-f4147.web.app//>
 
 ### Students
@@ -96,7 +96,7 @@ The user can view, edit, and delete the created plan.
 
 **Is there anything special we need to know in order to effectively test your app? (optional):**
 
-* None
+* The user stats page only shows the stats for completed plans, while absent plan or scheduled plan stats are not recorded. When testing the user stats page, sometimes, if the stats for completed plans are not shown in the chart, please refresh the page; then, the stats should be displayed there.
 
 
 
