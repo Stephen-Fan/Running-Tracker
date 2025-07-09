@@ -15,6 +15,6 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PROJECT2_F4147 }}
+          firebaseServiceAccount: ${{ secrets.GCP_SA_KEY }}
           channelId: live
-          projectId: project2-f4147
+          projectId: running-tracker-86998
