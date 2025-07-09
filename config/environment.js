@@ -2,7 +2,7 @@
 
 module.exports = function (environment) {
   const ENV = {
-    modulePrefix: 'running-tracker',
+    modulePrefix: 'project-2-20245117',
     environment,
     rootURL: '/',
     locationType: 'history',
