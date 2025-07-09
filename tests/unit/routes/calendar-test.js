@@ -1,5 +1,5 @@
 import { module, test } from 'qunit';
-import { setupTest } from 'project-2-20245117/tests/helpers';
+import { setupTest } from 'running-tracker/tests/helpers';
 
 module('Unit | Route | calendar', function (hooks) {
   setupTest(hooks);

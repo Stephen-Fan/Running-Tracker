@@ -34,12 +34,13 @@ export default class FirebaseService extends Service {
     super(...arguments);
 
     const firebaseConfig = {
-      apiKey: 'AIzaSyBA5j9IlyfRSDzNMqOkR6Jh-Cu1ezPurkA',
-      authDomain: 'project2-f4147.firebaseapp.com',
-      projectId: 'project2-f4147',
-      storageBucket: 'project2-f4147.firebasestorage.app',
-      messagingSenderId: '1009472379533',
-      appId: '1:1009472379533:web:7d80946a40e937612e20c4',
+      apiKey: "AIzaSyDgyzWo_AMAeu0G03NhWQ_jBr-nlM5cO0s",
+      authDomain: "running-tracker-86998.firebaseapp.com",
+      projectId: "running-tracker-86998",
+      storageBucket: "running-tracker-86998.firebasestorage.app",
+      messagingSenderId: "131436566714",
+      appId: "1:131436566714:web:8d07ddc46e4ba4d7118a83",
+      measurementId: "G-NQS8CJPS0M"
     };
 
     this.app = initializeApp(firebaseConfig);
