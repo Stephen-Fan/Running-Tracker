@@ -84,7 +84,7 @@
   "dependencies": {
     "@toast-ui/calendar": "^2.1.3",
     "chart.js": "^4.4.7",
-    "firebase": "^11.0.2",
+    "firebase": "^11.10.0",
     "tui-date-picker": "^4.3.3",
     "tui-time-picker": "^2.1.6"
   }

@@ -39,8 +39,8 @@ export default class FirebaseService extends Service {
       projectId: "running-tracker-86998",
       storageBucket: "running-tracker-86998.firebasestorage.app",
       messagingSenderId: "131436566714",
-      appId: "1:131436566714:web:8d07ddc46e4ba4d7118a83",
-      measurementId: "G-NQS8CJPS0M"
+      appId: "1:131436566714:web:96067a300a45abf3118a83",
+      measurementId: "G-NNGQS2B0T6"
     };
 
     this.app = initializeApp(firebaseConfig);
