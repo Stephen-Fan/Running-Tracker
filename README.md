@@ -7,7 +7,7 @@ CSCI 5117, Fall 2024, [assignment description](https://canvas.umn.edu/courses/46
 * Team Name: 20245117
 
 * App Name: Running Tracker
-* App Link: <https://running-tracker-86998.firebaseapp.com//>
+* App Link: <https://running-tracker-86998.firebaseapp.com>
 
 ### Students
 
